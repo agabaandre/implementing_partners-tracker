@@ -1,0 +1,66 @@
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead tr {
+    background-color: #2d2e2e;
+    color: #fff;
+}
+
+thead tr th {
+    padding: 7px;
+}
+
+tbody tr td {
+    padding: 5px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #CDECF7;
+}
+
+table,
+th,
+td {
+    border: 1px solid #000;
+}
+
+@media screen and (max-width: 600px) {
+    table thead {
+        display: none;
+    }
+    table td {
+        display: flex;
+    }
+    tbody tr:nth-child(odd) {
+        background-color: #FFF;
+    }
+    table {
+        border: none;
+    }
+    th,
+    td {
+        border: 1px solid #a2a3a3;
+        padding: 10px;
+    }
+    table tr {
+        display: block;
+        margin: 10px 0px;
+        border-radius: 4px!important;
+        border: 1px solid #7e8080;
+    }
+    table tr td {
+        border: 0px 1px 0px 1px;
+    }
+    table td::before {
+        content: attr(label)':';
+        font-weight: bold;
+        width: 120px;
+        min-width: 120px;
+    }
+}
