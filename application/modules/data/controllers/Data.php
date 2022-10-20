@@ -31,7 +31,7 @@ class Data extends MX_Controller
 		$data['partners'] = $this->data_model->get_data('partners');
 		$data['areas'] = $this->data_model->get_data('work_areas');
 		$data['activities'] = $this->data_model->get_data('activities');
-		
+
 
 		$data['module'] 	= "data";
 		$data['view']   	= "form";
@@ -137,5 +137,33 @@ class Data extends MX_Controller
 		$data['action'] 	= "data/activities";
 
 		echo Modules::run('templates/main', $data);
+	}
+	public function get_subthme()
+	{
+
+		if (!empty($_GET['subtheme'])) {
+
+			$dist = urldecode($_GET["subtheme"]);
+
+			$distdata = array();
+			$distdata = explode("_", $dist);
+
+			$dist_id = $distdata[0];
+			$district = $distdata[1];
+			$sql = "SELECT DISTINCT name,work_area_id FROM sub_work_areas WHERE work_area_id = '$dist_id' ORDER BY name ASC";
+
+			$facilities = $this->db->query($sql)->result();
+
+			$opt = "<option value=''>Select Subtheme</option>";
+
+			if (!empty($facilities)) {
+
+				foreach ($facilities as $facility) {
+					$opt .= "<option value='" . $facility->id . "__" . $facility->name . "'>" . ucwords($facility->name) . "</option>";
+				}
+			}
+
+			echo $opt;
+		}
 	}
 }

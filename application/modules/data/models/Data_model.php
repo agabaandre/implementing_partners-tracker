@@ -4,8 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Data_model extends CI_Model
 {
     public function get_data($table)
+
     {
-        return  $this->db->get($table)->result();
+
+        $this->db->order_by('name', 'ASC');
+        $data =  $this->db->get($table)->result();
+        return  $data;
     }
     public function get_district()
     {
@@ -37,6 +41,5 @@ class Data_model extends CI_Model
         } else {
             $wfilter = $_SESSION['dfilter'] = "";
         }
-       
     }
 }

@@ -14,7 +14,7 @@
     <?php echo form_open_multipart('data/create_partner'); ?>
     <div class="card-body">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4">
 
                 <div class="form-group">
                     <label for="Oganisation">Project</label>
@@ -47,15 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Areas of Intervention</label>
-                    <select class="form-control select2" style="width: 100%;" name="work_areas[]" tabindex="-1" aria-hidden="true" multiple>
-                        <option value="" disabled>SELECT OPTION BELOW</option>
-                        <?php foreach ($areas as $row) : ?>
-                            <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+
                 <div class="form-group">
                     <label>District</label>
                     <select class="form-control select2" name="district[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
@@ -65,15 +57,7 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Activities</label>
-                    <select class="form-control select2" name="actvities[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
-                        <option value="" disabled>SELECT OPTION BELOW</option>
-                        <?php foreach ($activities as $row) : ?>
-                            <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+
                 <div class="form-group">
                     <label>Funder(s)</label>
                     <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
@@ -88,7 +72,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="form-group">
                     <label for="Oganisation">Organisation Email</label>
                     <input type="text" class="form-control" name="email" placeholder="Email">
@@ -125,6 +109,35 @@
 
 
 
+            </div>
+            <div class="col-md-4">
+                <div id="theme" style="max-height: 600px; overflow:auto;">
+                    <div class="form-group">
+                        <button type="button" class="btnkey bg-gray-dark color-pale mb-2" onclick="addTheme()">Add Internvention Areas</button>
+                        <br>
+                        <label>Thematic Area</label>
+                        <select class="form-control select2" style="width: 100%;" name="work_areas[]" tabindex="-1" aria-hidden="true">
+                            <option value="" disabled>SELECT OPTION BELOW</option>
+                            <?php foreach ($areas as $row) : ?>
+                                <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Sub-Thematic Area</label>
+                        <select class="form-control select2 subtheme" style="width: 100%;" name="sub_theme[]" tabindex="-1" aria-hidden="true">
+
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Activities</label>
+                        <select class="form-control activities" name="actvities[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+
+
+                        </select>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -170,4 +183,69 @@
             $(this).closest('.person').remove();
 
         });
+
+        function addTheme() {
+
+            let theme_row = '<hr style="border-bottom: 1px solid #400;"><div class="form-group theme"><label>Thematic Area</label>';
+            theme_row += '<select class="form-control mb-2 select2" name="theme[]">';
+            theme_row += '<?php foreach ($areas as $row) : ?>';
+            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
+            theme_row += '<?php endforeach; ?></select></div>';
+            theme_row += '<div class="form-group theme"><label>Sub Thematic Area</label>';
+            theme_row += '<select class="form-control mb-2 select2" name="sub_theme[]">';
+            theme_row += '<?php foreach ($areas as $row) : ?>';
+            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
+            theme_row += '<?php endforeach; ?></select></div>';
+            theme_row += '<div class="form-group theme"><p>Activities</p>';
+            theme_row += '<select class="form-control mb-2 select2" name="activities[]" multiple>';
+            theme_row += '<?php foreach ($areas as $row) : ?>';
+            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
+            theme_row += '<?php endforeach; ?></select></div>';
+            theme_row += '<input type="button" value="Remove Row" class="btn btn-danger   btn-sm  mb-2"  onclick="removeTheme($(this))" ></div>'
+
+
+            $("#theme").append(theme_row);
+            if (theme_row && theme_row.nodeName === "SELECT") {
+                $(theme_row).select2();
+            }
+
+        }
+
+        function removeTheme(tag) {
+            //$("#theme").find("div:last").remove();
+            tag.closest('.theme').remove();
+        }
+
+        $('.removeBtn').on('click', function() {
+
+            console.log($(this).closest('.theme'));
+
+            $(this).closest('.theme').remove();
+
+        });
+
+        function getSubthemes(val) {
+            $.ajax({
+                method: "GET",
+                url: "<?php echo base_url(); ?>data/getSubthemes",
+                data: 'subtheme_' + val,
+                success: function(data) {
+                    //alert(data);
+                    $(".subtheme").html(data);
+                }
+            });
+        }
+
+        function getactivities(val) {
+            $.ajax({
+                method: "GET",
+                url: "<?php echo base_url(); ?>data/getactivities",
+                data: 'activities_' + val,
+                success: function(data) {
+                    //alert(data);
+                    $(".activities").html(data);
+                }
+                //  console.log('iwioowiiwoow');
+            });
+        }
     </script>
