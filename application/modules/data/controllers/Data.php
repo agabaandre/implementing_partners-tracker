@@ -143,27 +143,66 @@ class Data extends MX_Controller
 
 		if (!empty($_GET['subtheme'])) {
 
-			$dist = urldecode($_GET["subtheme"]);
+			$id = urldecode($_GET["subtheme"]);
 
-			$distdata = array();
-			$distdata = explode("_", $dist);
 
-			$dist_id = $distdata[0];
-			$district = $distdata[1];
-			$sql = "SELECT DISTINCT name,work_area_id FROM sub_work_areas WHERE work_area_id = '$dist_id' ORDER BY name ASC";
+			$sql = "SELECT DISTINCT id,name,work_area_id FROM sub_work_areas WHERE work_area_id = '$id' ORDER BY name ASC";
 
-			$facilities = $this->db->query($sql)->result();
+			$subtheme = $this->db->query($sql)->result();
 
 			$opt = "<option value=''>Select Subtheme</option>";
 
-			if (!empty($facilities)) {
+			if (!empty($subtheme)) {
 
-				foreach ($facilities as $facility) {
-					$opt .= "<option value='" . $facility->id . "__" . $facility->name . "'>" . ucwords($facility->name) . "</option>";
+				foreach ($subtheme as $sub) {
+					$opt .= "<option value='" . $sub->id .  "'>" . ucwords($sub->name) . "</option>";
 				}
 			}
 
 			echo $opt;
 		}
+	}
+	public function get_activities()
+	{
+
+		if (!empty($_GET['activities'])) {
+
+			$id = urldecode($_GET["activities"]);
+
+
+			$sql = "SELECT DISTINCT name,sub_work_areas_id FROM activities WHERE sub_work_areas_id = '$id' ORDER BY name ASC";
+
+			$activities = $this->db->query($sql)->result();
+
+			$opt = "<option value=''>Select Activities</option>";
+
+			if (!empty($activities)) {
+
+				foreach ($activities as $act) {
+					$opt .= "<option value='" . $act->id .  "'>" . ucwords($act->name) . "</option>";
+				}
+			}
+
+			echo $opt;
+		}
+	}
+	public function create_partner()
+	{
+		$data = $this->input->post();
+		$data['msg'] = $this->data_model->create_partner($data);
+
+		$data['districts'] = $this->data_model->get_district();
+		$data['funders'] = $this->data_model->get_data('funder');
+		$data['partners'] = $this->data_model->get_data('partners');
+		$data['areas'] = $this->data_model->get_data('work_areas');
+		$data['activities'] = $this->data_model->get_data('activities');
+
+
+		$data['module'] 	= "data";
+		$data['view']   	= "form";
+		print_r($data['district']);
+
+		echo Modules::run('templates/main', $data);
+		// 
 	}
 }
