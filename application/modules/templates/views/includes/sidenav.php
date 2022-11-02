@@ -52,13 +52,13 @@
               <li class="nav-item">
 
                 <?php if (in_array('13', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>data/create_projects" class="nav-link">
+                  <a href="<?php echo base_url(); ?>data/partners_profile" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Register</p>
                   </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/manage_projects" class="nav-link">
+                <a href="<?php echo base_url(); ?>data/manage_partners" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage</p>
                 </a>
@@ -109,6 +109,49 @@
               </p>
             </a>
 
+          </li>
+        <?php } ?>
+
+        <!--user perm 14-->
+        <?php if (in_array('35', $permissions)) { ?>
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="fa fa-list"></i>
+              <p>
+                Standard Form Lists
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+
+                <?php if (in_array('15', $permissions)) { ?>
+
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>data/work_areas" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Areas of Intervention</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>data/partners" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Partners</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>data/funders" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Funders</p>
+                </a>
+              </li>
+
+            <?php } ?>
+
+
+
+            </ul>
           </li>
         <?php } ?>
 

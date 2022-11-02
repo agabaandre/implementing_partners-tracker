@@ -16,7 +16,7 @@ class Data extends MX_Controller
 	}
 
 
-	public function create_projects($id = FALSE)
+	public function partners_profile($id = FALSE)
 
 	{
 
@@ -34,12 +34,12 @@ class Data extends MX_Controller
 
 
 		$data['module'] 	= "data";
-		$data['view']   	= "form";
+		$data['view']   	= "activities";
 
 		echo Modules::run('templates/main', $data);
 	}
 
-	public function manage_projects($id = FALSE, $csv = FALSE)
+	public function manage_partners($id = FALSE, $csv = FALSE)
 
 	{
 		if (empty($id)) {
@@ -47,7 +47,7 @@ class Data extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 		}
-		$route = "data/manage_projects";
+		$route = "data/manage_partners";
 		$district = $this->input->post('district');
 		$work_areas = $this->input->post('work_areas');
 
@@ -81,6 +81,25 @@ class Data extends MX_Controller
 
 		echo Modules::run('templates/main', $data);
 	}
+	public function partners()
+
+	{
+		if (empty($id)) {
+			$data['uptitle'] = $data['title']     = "Partners";
+		} else {
+			$data['uptitle'] = $data['title']     = " Manage Partners";
+		}
+		$table = "partners";
+		$data['datas'] = $this->data_model->get_data($table);
+
+		$data['module'] 	= "data";
+		$data['field'] 	= "name";
+		$data['label'] 	= "Partners";
+		$data['view']   	= "settings/option";
+		$data['action'] 	= "data/partners";
+
+		echo Modules::run('templates/main', $data);
+	}
 	public function work_areas()
 
 	{
@@ -108,14 +127,17 @@ class Data extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Activities";
 		}
+		$data['districts'] = $this->data_model->get_district();
+		$data['funders'] = $this->data_model->get_data('funder');
+		$data['partners'] = $this->data_model->get_data('partners');
+		$data['areas'] = $this->data_model->get_data('work_areas');
+		$data['activities'] = $this->data_model->get_data('activities');
 		$table = "activities";
-		$data['datas'] = $this->data_model->get_data($table);
-
 		$data['module'] 	= "data";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Activity";
-		$data['view']   	= "settings/option";
-		$data['action'] 	= "data/activities";
+		$data['view'] = "form";
+
 
 		echo Modules::run('templates/main', $data);
 	}

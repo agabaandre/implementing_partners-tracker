@@ -9,6 +9,15 @@ class Data_model extends CI_Model
 
         $this->db->order_by('name', 'ASC');
         $data =  $this->db->get($table)->result();
+        if (!empty($this->input->post('name'))) {
+            $field = $this->input->post();
+            $insert = $this->db->insert("$table", $field);
+        }
+        if ($insert) {
+            $data['message'] = "Saved Successfully";
+        } else {
+            $data['message'] = "Not Saved";
+        }
         return  $data;
     }
     public function get_district()
