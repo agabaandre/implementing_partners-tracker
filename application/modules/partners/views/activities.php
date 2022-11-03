@@ -37,8 +37,6 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-
-
                 <div class="form-group">
                     <label>Funder(s) <?php echo required(); ?></label>
                     <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
@@ -46,7 +44,6 @@
                         <?php foreach ($funders as $row) : ?>
                             <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
                         <?php endforeach; ?>
-
                         <?php
 
                         ?>
