@@ -77,7 +77,6 @@
               <i class="fa fa-road"></i>
               <p>
                 Submit Report
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
           </li>
