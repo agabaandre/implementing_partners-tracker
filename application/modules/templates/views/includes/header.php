@@ -34,8 +34,7 @@ $permissions = $userdata['permissions'];
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/adminlte.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/highcharts.js"></script>
   <script src="https://code.highcharts.com/highcharts-more.js"></script>
   <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -85,13 +84,13 @@ $permissions = $userdata['permissions'];
     }
 
     .dash-icon {
-      color: #37989d;
+      color: #FFF;
       font-size: 15px;
       margin-right: 4px;
     }
 
     .fa-circle {
-      color: #37989d;
+      color: #FFF;
       font-size: 6px !important;
     }
 
@@ -109,8 +108,16 @@ $permissions = $userdata['permissions'];
       border-color: #7d101b;
       color: #fff;
       padding: 0 10px;
-      font-size: 14px;
+      font-size: 12px;
       margin-top: 0.31rem;
+    }
+
+    .sidebar-mini .nav-sidebar,
+    .sidebar-mini .nav-sidebar .nav-link,
+    .sidebar-mini .nav-sidebar>.nav-header {
+      white-space: nowrap;
+      overflow: hidden;
+      color: #979a9a;
     }
 
     .btn-outline-success {
@@ -154,12 +161,16 @@ $permissions = $userdata['permissions'];
 
     .btn {
       font-size: 12px !important;
+      border-radius: 4px !important;
+      color: #FFF;
+      min-width: 100px !important;
     }
+
 
     .buttons-html5 {
       font-size: 12px !important;
       background: #343a40 !important;
-      margin: 6px;
+      margin: 4px;
       border-radius: 4px;
 
     }
@@ -222,6 +233,13 @@ $permissions = $userdata['permissions'];
       background-color: #E4E5E5;
       z-index: 200;
     }
+
+    container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+      border-bottom-left-radius: 0;
+      height: 50px;
+      border-bottom-right-radius: 0;
+    }
+
 
     #status {
       width: 50px;

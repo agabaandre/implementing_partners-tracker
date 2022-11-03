@@ -256,6 +256,13 @@ if (!function_exists('dd')) {
     }
 }
 
+if (!function_exists('required')) {
+    function required()
+    {
+        return "<b style='color:red'>*</b>";
+    }
+}
+
 
 if (!function_exists('poeple_titles')) {
     function poeple_titles()

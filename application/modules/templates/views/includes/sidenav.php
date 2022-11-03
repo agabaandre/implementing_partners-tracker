@@ -52,13 +52,13 @@
               <li class="nav-item">
 
                 <?php if (in_array('13', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>data/partners_profile" class="nav-link">
+                  <a href="<?php echo base_url(); ?>partners/partners_profile" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Register</p>
                   </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/manage_partners" class="nav-link">
+                <a href="<?php echo base_url(); ?>partners/manage_partners" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage</p>
                 </a>
@@ -85,7 +85,7 @@
               <li class="nav-item">
 
                 <?php if (in_array('13', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>data/activities" class="nav-link">
+                  <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Create</p>
                   </a>
@@ -129,19 +129,19 @@
                 <?php if (in_array('15', $permissions)) { ?>
 
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/work_areas" class="nav-link">
+                <a href="<?php echo base_url(); ?>partners/work_areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Areas of Intervention</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/partners" class="nav-link">
+                <a href="<?php echo base_url(); ?>partners/partners" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Partners</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/funders" class="nav-link">
+                <a href="<?php echo base_url(); ?>partners/funders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Funders</p>
                 </a>
@@ -174,24 +174,6 @@
                     <i class="far fa-circle nav-icon"></i>
                     <p>Manage User</p>
                   </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/work_areas" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Areas of Intervention</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/partners" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Partners</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>data/funders" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Funders</p>
-                </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>admin/groups" class="nav-link">

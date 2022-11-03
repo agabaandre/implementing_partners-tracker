@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data_model extends CI_Model
+class Partners_model extends CI_Model
 {
     public function get_data($table)
 
@@ -11,9 +11,7 @@ class Data_model extends CI_Model
         $data =  $this->db->get($table)->result();
         if (!empty($this->input->post('name'))) {
             $field = $this->input->post();
-            $insert = $this->db->insert("$table", $field);
-        }
-        if ($insert) {
+            $insert = $this->db->insert("$table", "$field");
             $data['message'] = "Saved Successfully";
         } else {
             $data['message'] = "Not Saved";

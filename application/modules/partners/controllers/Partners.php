@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Data extends MX_Controller
+class Partners extends MX_Controller
 {
 
 	public function __construct()
@@ -9,7 +9,7 @@ class Data extends MX_Controller
 		parent::__construct();
 
 		$this->load->model(array(
-			'data_model'
+			'partners_model'
 		));
 		$this->watermark = FCPATH . "assets/images/moh.png";
 		$this->load->library('pagination');
@@ -26,14 +26,14 @@ class Data extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 			$data['partners'] = $this->partners_mdl->get();
 		}
-		$data['districts'] = $this->data_model->get_district();
-		$data['funders'] = $this->data_model->get_data('funder');
-		$data['partners'] = $this->data_model->get_data('partners');
-		$data['areas'] = $this->data_model->get_data('work_areas');
-		$data['activities'] = $this->data_model->get_data('activities');
+		$data['districts'] = $this->partners_model->get_district();
+		$data['funders'] = $this->partners_model->get_data('funder');
+		$data['partners'] = $this->partners_model->get_data('partners');
+		$data['areas'] = $this->partners_model->get_data('work_areas');
+		$data['activities'] = $this->partners_model->get_data('activities');
 
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['view']   	= "activities";
 
 		echo Modules::run('templates/main', $data);
@@ -51,14 +51,14 @@ class Data extends MX_Controller
 		$district = $this->input->post('district');
 		$work_areas = $this->input->post('work_areas');
 
-		$totals = $this->data_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
+		$totals = $this->partners_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
 		if ($csv != 1) {
 			$data['links'] = paginate($route, $totals, $perPage = 50, $segment = 3);
 		}
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['datas'] = $this->data_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
+		$data['datas'] = $this->partners_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['view']   	= "list";
 		echo Modules::run('templates/main', $data);
 	}
@@ -71,9 +71,9 @@ class Data extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Funders";
 		}
 		$table = "funder";
-		$data['datas'] = $this->data_model->get_data($table);
+		$data['datas'] = $this->partners_model->get_data($table);
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Funders";
 		$data['view']   	= "settings/option";
@@ -90,9 +90,9 @@ class Data extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Partners";
 		}
 		$table = "partners";
-		$data['datas'] = $this->data_model->get_data($table);
+		$data['datas'] = $this->partners_model->get_data($table);
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Partners";
 		$data['view']   	= "settings/option";
@@ -109,9 +109,9 @@ class Data extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Work Areas";
 		}
 		$table = "work_areas";
-		$data['datas'] = $this->data_model->get_data($table);
+		$data['datas'] = $this->partners_model->get_data($table);
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Work Areas";
 		$data['view']   	= "settings/option";
@@ -127,13 +127,13 @@ class Data extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Activities";
 		}
-		$data['districts'] = $this->data_model->get_district();
-		$data['funders'] = $this->data_model->get_data('funder');
-		$data['partners'] = $this->data_model->get_data('partners');
-		$data['areas'] = $this->data_model->get_data('work_areas');
-		$data['activities'] = $this->data_model->get_data('activities');
+		$data['districts'] = $this->partners_model->get_district();
+		$data['funders'] = $this->partners_model->get_data('funder');
+		$data['partners'] = $this->partners_model->get_data('partners');
+		$data['areas'] = $this->partners_model->get_data('work_areas');
+		$data['activities'] = $this->partners_model->get_data('activities');
 		$table = "activities";
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Activity";
 		$data['view'] = "form";
@@ -150,9 +150,9 @@ class Data extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 		}
 		$table = "activities";
-		$data['datas'] = $this->data_model->get_data($table);
+		$data['datas'] = $this->partners_model->get_data($table);
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
 		$data['label'] 	= "Activity";
 		$data['view']   	= "settings/option";
@@ -211,16 +211,16 @@ class Data extends MX_Controller
 	public function create_partner()
 	{
 		$data = $this->input->post();
-		$data['msg'] = $this->data_model->create_partner($data);
+		$data['msg'] = $this->partners_model->create_partner($data);
 
-		$data['districts'] = $this->data_model->get_district();
-		$data['funders'] = $this->data_model->get_data('funder');
-		$data['partners'] = $this->data_model->get_data('partners');
-		$data['areas'] = $this->data_model->get_data('work_areas');
-		$data['activities'] = $this->data_model->get_data('activities');
+		$data['districts'] = $this->partners_model->get_district();
+		$data['funders'] = $this->partners_model->get_data('funder');
+		$data['partners'] = $this->partners_model->get_data('partners');
+		$data['areas'] = $this->partners_model->get_data('work_areas');
+		$data['activities'] = $this->partners_model->get_data('activities');
 
 
-		$data['module'] 	= "data";
+		$data['module'] 	= "partners";
 		$data['view']   	= "form";
 		print_r($data['district']);
 

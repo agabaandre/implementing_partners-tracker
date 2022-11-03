@@ -1,12 +1,34 @@
 <style>
     .form-control {
-        min-height: 100px;
+        min-height: 60px;
 
+    }
+
+    .select2-container--default .select2-selection--single {
+        border: 1px solid #ced4da;
+        padding: 0.46875rem 0.75rem;
+        height: 60px !important;
+    }
+
+    .select2-container--default .select2-selection--multiple {
+        border: 1px solid #ced4da;
+        padding: 0.46875rem 0.75rem;
+        height: 60px !important;
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 </style>
 <div class="card card-default" data-select2-id="32">
     <div class="card-header">
-        <h3 class="card-title">Reporting</h3>
+        <h3 class="card-title"><?php echo $uptitle; ?></h3>
         <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fas fa-minus"></i>
@@ -30,41 +52,39 @@
 
             <table>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-warning btn-outline">Save</button>
+                    <button type="submit" class="btn btn-info btn-outline">Save</button>
                     <button type="reset" class="btn  btnkey bg-gray-dark color-pale ">Reset All</button>
 
                 </div>
                 <thead>
                     <tr>
-                        <th>
+                        <th style="width:5%;">
                             <p>Activity date</p>
                         </th>
-                        <th>
-                            <p>Duration</p>
+                        <th style="width:2%;">
+                            <p>Duration (Days)</p>
                         </th>
-                        <th>
+                        <th style="width:10%;">
                             <p>Activity</p>
                         </th>
-                        <th>
+                        <th style="width:10%;">
                             <p>Sub-Activity</p>
                         </th>
-                        <th>
+                        <th style="width:15%;">
                             <p>Description</p>
                         </th>
-                        <th>
+                        <th style="width:10%;">
                             <p>Scope- coverage</p>
                         </th>
-                        <th>
-                            <p>District</p>
-                        </th>
-                        <th>
+
+                        <th style="width:15%;">
                             <p>Number of Beneficiaries</p>
 
                         </th>
-                        <th>
+                        <th style="width:10%;">
                             <p>Beneficiaries Categories(Text)</p>
                         </th>
-                        <th>
+                        <th style="width:10%;">
                             <p>Budget(UGX)</p>
                         </th>
                     </tr>
@@ -72,56 +92,37 @@
                 <tbody>
                     <tr>
 
-                        <td><input type="date" class="form-control" name="" placeholder="Report Date"></td>
-                        <td><input type="number" class="form-control" name="" placeholder=""></td>
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
                         <td>
-                            <select class="form-control select2" name="district[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                <option value="" disabled>SELECT OPTION BELOW</option>
-                                <option vale="National">National</option>
-                                <?php foreach ($districts as $row) : ?>
-                                    <option value="<?php echo $row->district_id; ?>"><?php echo $row->district; ?></option>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
                                 <?php endforeach; ?>
                             </select>
 
                         </td>
-                        <td>
+                        <td class="sub_activity">
 
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
                             <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
-                                <option value="" disabled>SELECT OPTION BELOW</option>
-                                <?php foreach ($funders as $row) : ?>
-                                    <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
                                 <?php endforeach; ?>
 
                                 <?php
 
                                 ?>
                             </select>
-
                         </td>
-                        <td> <textarea class="form-control" name="beneficiaries" rows="5"></textarea></td>
-                        <td> <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
-                                <option value="" disabled>SELECT SCCOPE</option>
-                                <?php foreach ($funders as $row) : ?>
-                                    <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                                <?php endforeach; ?>
-
-                                <?php
-
-                                ?>
-                            </select></td>
-                        <td> <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
-                                <option value="" disabled>SELECT DISTRICT BELOW</option>
-                                <?php foreach ($funders as $row) : ?>
-                                    <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
-                                <?php endforeach; ?>
-
-                                <?php
-
-                                ?>
-                            </select></td>
-                        <td><input type="number" class="form-control" name="" placeholder=""></td>
-                        <td><textarea class="form-control" name="beneficiaries" rows="5"></textarea></td>
-                        <td><input type="number" class="form-control" name="" placeholder=""></td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
 
 
                     </tr>
@@ -170,41 +171,6 @@
             $(this).closest('.person').remove();
 
         });
-
-
-
-        function addTheme() {
-
-            let theme_row = '<hr style="border-bottom: 1px solid #400;"><div class="form-group theme"><label>Thematic Area</label>';
-            theme_row += '<select class="form-control mb-2 select2" name="theme[]">';
-            theme_row += '<?php foreach ($areas as $row) : ?>';
-            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
-            theme_row += '<?php endforeach; ?></select></div>';
-            theme_row += '<div class="form-group theme"><label>Sub Thematic Area</label>';
-            theme_row += '<select class="form-control mb-2 select2" name="sub_theme[]">';
-            theme_row += '<?php foreach ($areas as $row) : ?>';
-            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
-            theme_row += '<?php endforeach; ?></select></div>';
-            theme_row += '<div class="form-group theme"><p>Activities</p>';
-            theme_row += '<select class="form-control mb-2 select2" name="activities[]" multiple>';
-            theme_row += '<?php foreach ($areas as $row) : ?>';
-            theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
-            theme_row += '<?php endforeach; ?></select></div>';
-            theme_row += '<input type="button" value="Remove Row" class="btn btn-danger   btn-sm  mb-2"  onclick="removeTheme($(this))" ></div>'
-
-
-            $("#theme").append(theme_row);
-            if (theme_row && theme_row.nodeName === "SELECT") {
-                $(theme_row).select2();
-            }
-
-        }
-
-        function removeTheme(tag) {
-            //$("#theme").find("div:last").remove();
-            tag.closest('.theme').remove();
-            count--;
-        }
 
         $('.removeBtn').on('click', function() {
 

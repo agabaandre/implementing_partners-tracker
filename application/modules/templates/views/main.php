@@ -41,7 +41,7 @@ require_once("includes/sidenav.php");
   </div>
   <section class="content">
 
-    <div class="container-fluid" style="font-size:12px; min-height:940px; margin-top:40px;">
+    <div class="container-fluid" style="font-size:12px;  margin-top:40px;">
 
       <div class="row">
         <div class="col-12" style="margin-bottom:3px;">

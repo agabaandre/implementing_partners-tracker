@@ -30,9 +30,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Implementing Partner</label>
-                    <select class="form-control select2" style="width: 100%;" name="partner" tabindex="-1" aria-hidden="true" multiple>
-                        <option value="" disabled>SELECT OPTION BELOW</option>
+                    <label>Implementing Partner <?php echo required(); ?></label>
+                    <select class="form-control select2" style="width: 100%;" name="partner" tabindex="-1" aria-hidden="true" multiple required>
                         <?php foreach ($partners as $row) : ?>
                             <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
                         <?php endforeach; ?>
@@ -41,7 +40,7 @@
 
 
                 <div class="form-group">
-                    <label>Funder(s)</label>
+                    <label>Funder(s) <?php echo required(); ?></label>
                     <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
                         <option value="" disabled>SELECT OPTION BELOW</option>
                         <?php foreach ($funders as $row) : ?>
@@ -54,12 +53,16 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="Oganisation">Organisation Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="Email">
+                    <label for="Oganisation">Organisation Email <?php echo required(); ?></label>
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
-                    <label for="Oganisation">Organisation Telephone</label>
-                    <input type="text" class="form-control" name="organisation_telephone" placeholder="Telephone">
+                    <label for="Oganisation">Organisation Telephone <?php echo required(); ?></label>
+                    <input type="text" class="form-control" name="organisation_telephone" placeholder="Telephone" required>
+                </div>
+                <div class="form-group">
+                    <label for="Oganisation">Postal Address </label>
+                    <textarea class="form-control" name="postal_address"></textarea>
                 </div>
             </div>
             <div class="col-md-6">
@@ -102,7 +105,7 @@
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-warning btn-outline">Save</button>
+                <button type="submit" class="btn btn-info btn-outline">Save</button>
                 <button type="reset" class="btn  btnkey bg-gray-dark color-pale ">Reset All</button>
 
             </div>
