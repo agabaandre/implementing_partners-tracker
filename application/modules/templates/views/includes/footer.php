@@ -9,11 +9,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/USAID-Identity.svg" style="width:800px; height:80px;">
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
             <a href="http://health.go.ug" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Coat_of_arms_of_Uganda.svg" style="width:800px; height:80px; "> </a>
         </div>
 
@@ -243,7 +243,7 @@ $linkquery = $url; // Outputs: Full URL
                 </div>
                 <div class="modal-footer">
                     <input type="submit" value="Submit" class="btn btn-primary">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn  btnkey bg-gray-dark color-pale" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
