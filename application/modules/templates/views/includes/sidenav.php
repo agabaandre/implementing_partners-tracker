@@ -73,28 +73,13 @@
         <!--user perm 14-->
         <?php if (in_array('13', $permissions)) { ?>
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
+            <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
               <i class="fa fa-road"></i>
               <p>
-                Activity Reporting
+                Submit Report
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-
-                <?php if (in_array('13', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Create</p>
-                  </a>
-              </li>
-
-
-            <?php } ?>
-
-            </ul>
           </li>
         <?php } ?>
 

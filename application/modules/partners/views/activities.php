@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <?php echo form_open_multipart('data/create_partner'); ?>
+    <?php echo form_open_multipart('partners/create_partner'); ?>
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center" style="margin-top:20px;">
             <p><?php if (!empty($msg)) {

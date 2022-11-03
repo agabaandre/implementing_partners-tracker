@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <?php echo form_open_multipart('data/create_partner'); ?>
+
     <div class="row">
         <div class="col-md-12 d-flex justify-content-center" style="margin-top:20px;">
             <p><?php if (!empty($msg)) {
@@ -51,6 +51,8 @@
         <div class="col-md-12">
 
             <table>
+                <?php echo form_open_multipart('partners/submit_report'); ?>
+
                 <div class="card-footer">
                     <button type="submit" class="btn btn-info btn-outline">Save</button>
                     <button type="reset" class="btn  btnkey bg-gray-dark color-pale ">Reset All</button>
@@ -306,6 +308,8 @@
 
 
                     </tr>
+
+
                     <tr>
 
                         <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
@@ -342,6 +346,8 @@
 
 
                     </tr>
+
+
                     <tr>
 
                         <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
@@ -378,6 +384,8 @@
 
 
                     </tr>
+
+
                     <tr>
 
                         <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
@@ -413,7 +421,11 @@
                         <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
 
 
+                        </form>
+
+
                     </tr>
+
                 </tbody>
             </table>
         </div>
