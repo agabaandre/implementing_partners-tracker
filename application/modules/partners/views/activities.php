@@ -88,17 +88,10 @@
                     </div>
 
                 </div>
-
-
-
-
-
                 <div id="theme" style="max-height: 600px; overflow:auto;">
                     <button type="button" class="btnkey bg-gray-dark color-pale mb-2" onclick="addTheme()">Add Internvention Areas</button>
                     <br>
                 </div>
-
-
             </div>
 
             <div class="card-footer">

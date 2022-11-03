@@ -126,6 +126,222 @@
 
 
                     </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
+                    <tr>
+
+                        <td><input type="date" class="form-control" name="date[]" placeholder="Report Date"></td>
+                        <td><input type="number" class="form-control" name="duration[]" placeholder=""></td>
+                        <td>
+                            <select class="form-control select2" name="activity[]" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="" disabled>SELECT Activity</option>
+                                <?php foreach ($activities as $activity) : ?>
+                                    <option value="<?php echo $activity->id; ?>"><?php echo $activity->name; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                        </td>
+                        <td class="sub_activity">
+
+                        </td>
+                        <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
+                        <td>
+                            <select class="form-control select2" name="funder[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                <option value="" disabled>SELECT SCCOPE</option>
+                                <option value="" disabled>National</option>
+                                <?php foreach ($districts as $district) : ?>
+                                    <option value="<?php echo $district->id; ?>"><?php echo $district->name; ?></option>
+                                <?php endforeach; ?>
+
+                                <?php
+
+                                ?>
+                            </select>
+                        </td>
+                        <td><input type="number" class="form-control" name="no_beneficiaries[]" placeholder=""></td>
+                        <td><textarea class="form-control" name="beneficiaries[]" rows="2"></textarea></td>
+                        <td><input type="number" class="form-control" name="budget[]" placeholder=""></td>
+
+
+                    </tr>
                 </tbody>
             </table>
         </div>
