@@ -4,14 +4,14 @@
 <footer class="footer">
 
     <div class="col-md-3">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/USAID-Identity.svg" style="width:100px; height:20px; ">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/USAID-Identity.svg" style="width:800px; height:80px;">
         <div>
             <div class="col-md-5">
                 <p style="font-size:8px; margin:0 auto;">&copy; <?php echo date('Y'); ?>, Ministry of Health -Uganda. <strong>All Rights Reserved</strong></p>
 
             </div>
             <div class="col-md-3">
-                <a href="http://health.go.ug" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Coat_of_arms_of_Uganda.svg" style="width:50px; height:30px; "> </a>
+                <a href="http://health.go.ug" target="_blank"> <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Coat_of_arms_of_Uganda.svg" style="width:800px; height:80px; "> </a>
             </div>
 
 
