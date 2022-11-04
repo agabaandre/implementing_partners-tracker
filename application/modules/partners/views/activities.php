@@ -31,7 +31,7 @@
 
                 <div class="form-group">
                     <label>Implementing Partner <?php echo required(); ?></label>
-                    <select class="form-control select2" style="width: 100%;" name="partner" tabindex="-1" aria-hidden="true" multiple required>
+                    <select class="form-control select2" style="width: 100%;" name="partner[]" tabindex="-1" aria-hidden="true" multiple required>
                         <?php foreach ($partners as $row) : ?>
                             <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
                         <?php endforeach; ?>

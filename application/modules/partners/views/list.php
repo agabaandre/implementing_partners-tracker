@@ -56,14 +56,6 @@
 
         &nbsp;&nbsp;<p class="pagination"><?php echo $links; ?>
 
-            <b> &nbsp;&nbsp;<?php $t = ($total_rows);
-                            if ($t < 0) {
-                                echo $t;
-                            } else {
-                                echo $t;
-                            }
-                            ' Records'; ?></b>
-
         <div class="table" style="overflow-x:auto;">
 
 
@@ -74,11 +66,6 @@
                         <th>Project</th>
                         <th>Implementing Partner</th>
                         <th label="Contact">Telephone Contact</th>
-                        <th label="Contact">Email</th>
-                        <th label="Firstname">Coverage</th>
-                        <th label="Othername">Contact Person </th>
-                        <th label="Othername">Contact Person Mobile Number </th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -86,17 +73,11 @@
                     $i = 1;
 
                     foreach ($datas as $row) : ?>
-
+                        <tr>
                         <td label="No"><?php echo $i++ ?></td>
                         <td label="Project"><?php echo $row->project ?></td>
-                        <td label="Partner"> <?php $row->partner->name; ?> </td>
-                        <td label="Partner"> <?php $row->telephone; ?> </td>
+                        <td label="Partner"> <?php $row->organisation_telephone; ?> </td>
                         <td label="Partner"> <?php $row->email; ?> </td>
-                        <td label="Coverage"><?php $row->partner->district ?></td>
-                        <td label="Contact person"><?php $row->organisation_contact_person->name; ?></td>
-                        <td label="Primary Phone Number"><?php echo $row->organisation_contact_person->phone_number; ?></td>
-
-
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -26,10 +26,11 @@ class Partners extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 			$data['partners'] = $this->partners_mdl->get();
 		}
-		$data['districts'] = $this->partners_model->get_district();
-		$data['funders'] = $this->partners_model->get_data('funder');
-		$data['partners'] = $this->partners_model->get_data('partners');
-		$data['areas'] = $this->partners_model->get_data('work_areas');
+
+		$data['districts']  = $this->partners_model->get_district();
+		$data['funders']    = $this->partners_model->get_data('funder');
+		$data['partners']   = $this->partners_model->get_data('partners');
+		$data['areas']      = $this->partners_model->get_data('work_areas');
 		$data['activities'] = $this->partners_model->get_data('activities');
 
 
@@ -47,21 +48,22 @@ class Partners extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 		}
-		$route = "data/manage_partners";
-		$district = $this->input->post('district');
-		$work_areas = $this->input->post('work_areas');
+		$route      = "data/manage_partners";
+		
+		$totals     = 100;
 
-		$totals = $this->partners_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
-		if ($csv != 1) {
-			$data['links'] = paginate($route, $totals, $perPage = 50, $segment = 3);
-		}
-		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['datas'] = $this->partners_model->get_projects($district, $work_areas, $perPage = 0, $page = 0, $csv);
+		$data['links'] = paginate($route, $totals, $perPage = 50, $segment = 3);
+	
+		$page 		   = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['datas'] = $this->partners_model->get_projects();
+
+		$data['districts'] 	= $this->partners_model->get_district();
 
 		$data['module'] 	= "partners";
 		$data['view']   	= "list";
 		echo Modules::run('templates/main', $data);
 	}
+
 	public function funders()
 
 	{
@@ -70,6 +72,7 @@ class Partners extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Funders";
 		}
+
 		$table = "funder";
 		$data['datas'] = $this->partners_model->get_data($table);
 
@@ -149,8 +152,11 @@ class Partners extends MX_Controller
 		} else {
 			$data['uptitle'] = $data['title']     = " Manage Partner";
 		}
-		$table = "activities";
-		$data['datas'] = $this->partners_model->get_data($table);
+
+		$data['datas'] = $this->partners_model->get_projects();
+
+		print_r($data['datas']);
+		exit();
 
 		$data['module'] 	= "partners";
 		$data['field'] 	= "name";
@@ -160,6 +166,7 @@ class Partners extends MX_Controller
 
 		echo Modules::run('templates/main', $data);
 	}
+
 	public function get_subthme()
 	{
 
@@ -208,23 +215,11 @@ class Partners extends MX_Controller
 			echo $opt;
 		}
 	}
+
 	public function create_partner()
 	{
-		$data = $this->input->post();
-		$data['msg'] = $this->partners_model->create_partner($data);
+		$msg = $this->partners_model->save_partner();
 
-		$data['districts'] = $this->partners_model->get_district();
-		$data['funders'] = $this->partners_model->get_data('funder');
-		$data['partners'] = $this->partners_model->get_data('partners');
-		$data['areas'] = $this->partners_model->get_data('work_areas');
-		$data['activities'] = $this->partners_model->get_data('activities');
-
-
-		$data['module'] 	= "partners";
-		$data['view']   	= "form";
-		print_r($data['district']);
-
-		echo Modules::run('templates/main', $data);
-		// 
+		echo $msg;
 	}
 }
