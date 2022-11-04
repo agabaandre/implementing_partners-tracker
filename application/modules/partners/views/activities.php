@@ -106,38 +106,6 @@
         <script>
             var count = 0;
 
-            function addContact() {
-
-                let contact_row = '<div class="form-group person"><p>Contact Person</p>';
-                contact_row += '<select class="form-control mb-2" name="person_title">';
-                contact_row += '<option>Mr.</option>';
-                contact_row += '<option>Mrs.</option>';
-                contact_row += '<option>Dr.</option>';
-                contact_row += '<option>Pr.</option>';
-                contact_row += '<option>Ms.</option>';
-                contact_row += '<option>Hon.</option></select>';
-                contact_row += '<input type="text" name="name[]" class="form-control mb-2" placeholder="Name" class="form-group" required>';
-                contact_row += '<input type="text" class="form-control mb-2" placeholder="Phone Number" name="phone[]" class="form-group mb-2" required/>';
-                contact_row += '<input type="text"  class="form-control mb-2" name="email[]" placeholder="Email" class="form-group mb-2" required/>';
-                contact_row += '<input type="text"  class="form-control" name="position[]" placeholder="Position or Job" class="form-group mb-2" required/>';
-                contact_row += '<input type="button" value="Remove Contact Person" class="btn btn-primary   btn-sm  mb-2"  onclick="removeContact($(this))" ></div>'
-
-                $("#contact").append(contact_row);
-            }
-
-            function removeContact(elem) {
-                //$("#contact").find("div:last").remove();
-                elem.closest('.person').remove();
-            }
-
-            $('.removeBtn').on('click', function() {
-
-                console.log($(this).closest('.person'));
-
-                $(this).closest('.person').remove();
-
-            });
-
             function addTheme() {
 
                 let theme_row = '<hr style="border-bottom: 1px solid #400;"><div class="form-group theme"><label>Thematic Area</label>';
