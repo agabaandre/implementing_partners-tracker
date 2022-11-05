@@ -40,23 +40,17 @@ class Partners extends MX_Controller
 		echo Modules::run('templates/main', $data);
 	}
 
-	public function manage_partners($id = FALSE, $csv = FALSE)
-
+	public function manage_partners()
 	{
-		if (empty($id)) {
-			$data['uptitle'] = $data['title']     = " Register";
-		} else {
-			$data['uptitle'] = $data['title']     = " Manage Partner";
-		}
-		$route      = "data/manage_partners";
-		
-		$totals     = 100;
+		$route   = "data/manage_partners";
+		$totals  = $this->partners_model->count_projects();
+		$perPage = 25;
+		$segment = 3;
 
-		$data['links'] = paginate($route, $totals, $perPage = 50, $segment = 3);
-	
-		$page 		   = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data['datas'] = $this->partners_model->get_projects();
+		$data['links'] = paginate($route, $totals, $perPage, $segment);
+		$page 		   = ($this->uri->segment($segment)) ? $this->uri->segment($segment) : 0;
 
+		$data['datas']      = $this->partners_model->get_projects($perPage, $page);
 		$data['districts'] 	= $this->partners_model->get_district();
 
 		$data['module'] 	= "partners";

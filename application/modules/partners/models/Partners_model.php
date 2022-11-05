@@ -24,8 +24,12 @@ class Partners_model extends CI_Model
         return  $this->db->get('districts')->result();
     }
 
-    public function get_projects()
+    public function get_projects($limit = null, $start = null)
     {
+
+        if ($limit)
+            $this->db->limit($limit, $start);
+
         $profiles = $this->db->get("partners_profile")->result();
 
         foreach ($profiles as $row) :
@@ -70,7 +74,7 @@ class Partners_model extends CI_Model
 
         $partners   = $data["partner"];
         $funders    = $data["funder"];
-        $activities = $data['theme'];
+        $activities = @$data['theme'];
 
         $data = array(
             "project"    => $data['project'],
@@ -113,7 +117,6 @@ class Partners_model extends CI_Model
 
     public function save_profile_activities($profile_id, $data)
     {
-
         foreach ($data as $key => $value) {
             $row = ['profile_id' => $profile_id, "activity_id" => $value];
             $this->db->insert("partners_activities", $row);
@@ -122,7 +125,6 @@ class Partners_model extends CI_Model
 
     public function save_profile_funders($profile_id, $data)
     {
-
         foreach ($data as $key => $value) {
             $row = ['profile_id' => $profile_id, "funder_id" => $value];
             $this->db->insert("partners_funders", $row);
@@ -154,5 +156,10 @@ class Partners_model extends CI_Model
             );
             $this->db->insert("organisation_activities", $insert3);
         }
+    }
+
+    public function count_projects()
+    {
+        return $this->db->count_all("partners_profile");
     }
 }

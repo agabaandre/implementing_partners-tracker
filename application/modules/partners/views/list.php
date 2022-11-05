@@ -1,112 +1,58 @@
-<section class="col-lg-12 connectedSortable">
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
 
-            <div class="card-tools">
+    <?php foreach ($datas as $row) :
 
-                <form class="form-horizontal" action="<?php echo base_url() ?>data/partners_list" method="post">
-                    <div class="row">
+        //print_r($row);
 
+    ?>
 
-                        <?php //print_r($this->session->userdata());
-                        ?>
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                District </label>
-                            <select name="district" class="form-control select2 sdistrict" style="width:100%;" onChange="getFacs($(this).val());">
-                                <option value="" disabled selected>DISTRICT</option>
-                                <option value="">ALL</option>
-                                <?php foreach ($districts as $district) :
-                                ?>
-                                    <option value="<?php echo $district->district; ?>" <?php if ($this->input->post('district') == $district->district) echo "selected"; ?>><?php echo $district->district; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-
-
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="aw_description">
-                                Worker Areas </label>
-                            <select name="work_areas" class="form-control select2">
-                               
-                            </select>
-                        </div>
-
-
+        <div class="card col-lg-12">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h6><?php echo $row->project; ?></h6>
+                        <p><?php echo time_ago($row->start_date); ?></p>
                     </div>
+                    <div class="col-lg-2">
+                        <br>
+                        <a href="" class="btn btn-success">View Details</a>
+                    </div>
+                </div>
             </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h4 class="text-sm text-info">Partners</h4>
+                        <?php foreach ($row->partners as $partner) { ?>
 
-            <div class="row">
-                <?php if ($this->input->post('district')) : ?>
-                    <a href="<?php echo base_url() ?>data/pdf_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file" aria-hidden="true"></i>PDF</a>
-                    &nbsp;&nbsp;
-                    <a href="<?php echo base_url() ?>data/csv_data/1" class="btn bt-sm bg-gray-dark color-pale" style="width:100px;"><i class="fa fa-file-excel" aria-hidden="true"></i>CSV</a>
-                    &nbsp;&nbsp;
-                <?php endif; ?>
-                <button type="submit" class="btn bt-sm bg-gray-dark color-pale" style="width:100px; left-right:4px;"><i class="fa fa-tasks" aria-hidden="true"></i>APPLY</button>
-                &nbsp;&nbsp;
+                            <li><?php echo $partner->name; ?></li>
+
+                        <?php } ?>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h4 class="text-sm text-info">Funders</h4>
+                        <?php foreach ($row->funders as $funder) { ?>
+
+                            <li><?php echo $funder->name; ?></li>
+
+                        <?php } ?>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <h4 class="text-sm text-info">Activities</h4>
+                        <?php foreach ($row->activities as $act) { ?>
+
+                            <li><?php echo $act->name; ?></li>
+
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
-            &nbsp;&nbsp;
         </div>
 
+    <?php endforeach; ?>
 
-        </form>
+    <?php echo $links; ?>
 
-
-        &nbsp;&nbsp;<p class="pagination"><?php echo $links; ?>
-
-        <div class="table" style="overflow-x:auto;">
-
-
-            <table id="example" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Project</th>
-                        <th>Implementing Partner</th>
-                        <th label="Contact">Telephone Contact</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-
-                    foreach ($datas as $row) : ?>
-                        <tr>
-                        <td label="No"><?php echo $i++ ?></td>
-                        <td label="Project"><?php echo $row->project ?></td>
-                        <td label="Partner"> <?php $row->organisation_telephone; ?> </td>
-                        <td label="Partner"> <?php $row->email; ?> </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- /.box -->
-    </div>
-    </div>
-</section>
-<script>
-    $(document).ready(function() {
-        $('.tb').DataTable({
-            dom: 'Bfrtip',
-            "lengthChange": true,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": true,
-            "responsive": false,
-
-            buttons: [
-                'copyHtml5',
-                'excelHtml5',
-                'csvHtml5',
-                'pageLength',
-
-
-            ]
-        });
-    });
-</script>
+</div>
