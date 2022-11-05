@@ -1,10 +1,6 @@
 <div class="row">
 
-    <?php foreach ($datas as $row) :
-
-        //print_r($row);
-
-    ?>
+    <?php foreach ($datas as $row) : ?>
 
         <div class="card col-lg-12">
             <div class="card-header">
