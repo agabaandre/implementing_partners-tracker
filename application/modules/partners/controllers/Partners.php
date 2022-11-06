@@ -127,7 +127,6 @@ class Partners extends MX_Controller
 		$data['partners']   = $this->partners_model->get_data('partners');
 		$data['areas']      = $this->partners_model->get_data('work_areas');
 
-		dd($data['areas']);
 
 		$data['profiles']   = $this->partners_model->get_data('partners_profile');
 
