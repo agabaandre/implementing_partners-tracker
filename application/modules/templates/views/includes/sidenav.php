@@ -31,8 +31,7 @@
           <a href="<?php echo base_url(); ?>" class="nav-link">
             <i class="fa fa-tachometer-alt"></i>
             <p>
-              Main Dashboard
-              </i>
+              Home
             </p>
           </a>
         </li>
@@ -76,7 +75,7 @@
             <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
               <i class="fa fa-road"></i>
               <p>
-                Submit Report
+                Submit Activity Report
               </p>
             </a>
           </li>
@@ -89,7 +88,6 @@
               <i class="fa fa-th"></i>
               <p>
                 Reports
-
               </p>
             </a>
 
@@ -156,7 +154,7 @@
                 <?php if (in_array('15', $permissions)) { ?>
                   <a href="<?php echo base_url(); ?>auth/users" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Manage User</p>
+                    <p>User Access</p>
                   </a>
               </li>
               <li class="nav-item">

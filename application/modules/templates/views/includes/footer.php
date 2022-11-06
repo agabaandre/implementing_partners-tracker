@@ -20,7 +20,6 @@
     </div>
 
 
-
 </footer>
 
 <!-- Control Sidebar -->
@@ -43,12 +42,12 @@
 <!-- AdminLTE App -->
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
+<!--<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>-->
 
 <!-- <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script> -->
-<!-- AdminLTE for demo purposes -->
+<!-- AdminLTE for demo purposes
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
-
+ -->
 
 <!-- <script src="<?php echo base_url(); ?>/assets/plugins/jquery/jquery.min.js"></script> -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
@@ -354,12 +353,12 @@ $linkquery = $url; // Outputs: Full URL
 
 
 
-        //Date and time picker
-        $('#reservationdatetime').datetimepicker({
-            icons: {
-                time: 'far fa-clock'
-            }
-        });
+        // //Date and time picker
+        // $('#reservationdatetime').datetimepicker({
+        //     icons: {
+        //         time: 'far fa-clock'
+        //     }
+        // });
 
         //Date range picker
         $('#reservation').daterangepicker()
@@ -389,13 +388,13 @@ $linkquery = $url; // Outputs: Full URL
             }
         )
 
-        //Timepicker
-        $('#timepicker').datetimepicker({
-            format: 'LT'
-        })
+        // //Timepicker
+        // $('#timepicker').datetimepicker({
+        //     format: 'LT'
+        // })
 
         //Bootstrap Duallistbox
-        $('.duallistbox').bootstrapDualListbox()
+        //$('.duallistbox').bootstrapDualListbox()
 
         //Colorpicker
         $('.my-colorpicker1').colorpicker()
@@ -412,19 +411,20 @@ $linkquery = $url; // Outputs: Full URL
 
     })
     // BS-Stepper Init
-    document.addEventListener('DOMContentLoaded', function() {
-        window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-    })
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+    // })
 
     // DropzoneJS Demo Code Start
-    Dropzone.autoDiscover = false
+    //Dropzone.autoDiscover = false
 
     // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    var previewNode = document.querySelector("#template")
-    previewNode.id = ""
-    var previewTemplate = previewNode.parentNode.innerHTML
-    previewNode.parentNode.removeChild(previewNode)
+    // var previewNode = document.querySelector("#template")
+    // previewNode.id = ""
+    // var previewTemplate = previewNode.parentNode.innerHTML
+    // previewNode.parentNode.removeChild(previewNode)
 
+    /*
     var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone
         url: "/target-url", // Set the url
         thumbnailWidth: 80,
@@ -459,6 +459,8 @@ $linkquery = $url; // Outputs: Full URL
     myDropzone.on("queuecomplete", function(progress) {
         document.querySelector("#total-progress").style.opacity = "0"
     })
+
+    */
 
     // Setup the buttons for all transfers
     // The "add files" button doesn't need to be setup because the config

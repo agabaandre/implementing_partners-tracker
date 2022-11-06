@@ -7,8 +7,9 @@ class Partners_model extends CI_Model
 
     {
 
-        $this->db->order_by('name', 'ASC');
+        $this->db->order_by('id', 'ASC');
         $data =  $this->db->get($table)->result();
+
         if (!empty($this->input->post('name'))) {
             $field = $this->input->post();
             $insert = $this->db->insert("$table", "$field");
@@ -16,13 +17,24 @@ class Partners_model extends CI_Model
         } else {
             $data['message'] = "Not Saved";
         }
+
         return  $data;
     }
 
-    public function get_district()
+    public function get_districts()
     {
         return  $this->db->get('districts')->result();
     }
+
+    public function get_activities($profile = null)
+    {
+        if ($profile)
+            $this->db->where('profile_id', $profile);
+
+        $this->db->join('activities', 'activities.id=partners_activities.activity_id');
+        return  $this->db->get('partners_activities')->result();
+    }
+
 
     public function get_projects($limit = null, $start = null)
     {
@@ -161,5 +173,36 @@ class Partners_model extends CI_Model
     public function count_projects()
     {
         return $this->db->count_all("partners_profile");
+    }
+
+    //submit report
+    public function save_report()
+    {
+        $postdata = $this->input->post();
+        $rows     = [];
+
+        for ($i = 0; $i < count($postdata['date']); $i++) :
+
+            $profile       = $postdata['profile_id'];
+            $date          = $postdata['date'][$i];
+            $activities    = $postdata['activity'][$i];
+            $budget        = $postdata['budget'][$i];
+            $days          = $postdata['duration'][$i];
+            $beneficiaries = $postdata['beneficiaries'][$i];
+            $location      =  (count($postdata['scope'][$i]) > 1) ? implode(",", $postdata['scope'][$i]) : $postdata['scope'][$i];
+
+            $row = array(
+                "profile_id"     => $profile,
+                "date"           => $date,
+                "activity_id"    => $activities,
+                "budget"         => $budget,
+                "duration"       => $days,
+                "beneficiaries"  => $beneficiaries,
+                "location"       => $location
+            );
+
+            $this->db->insert('partners_reports', $row);
+
+        endfor;
     }
 }

@@ -21,13 +21,7 @@ class Admin extends MX_Controller {
 
     
 
-        $this->load->model('admin_model');
-//$this->load->model('facilities_mdl');
-       // $this->load->model('districts_mdl');
-        //$this->load->model('schedules_mdl');
-        
-        
-
+       $this->load->model('admin_model');
        $this->username=$this->session->userdata['username'];
        $this->user_id=$this->session->userdata['user_id'];
         

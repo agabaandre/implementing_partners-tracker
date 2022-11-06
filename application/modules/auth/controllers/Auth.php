@@ -74,7 +74,8 @@ class Auth extends MX_Controller
         "division" => $person->division,
         "unit" => $person->unit,
         "district_id" => $person->district_id,
-        "district" => $person->district
+        "district" => $person->district,
+        "profile_id" => 2
 
       );
 

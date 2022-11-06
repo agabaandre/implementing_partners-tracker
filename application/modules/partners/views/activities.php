@@ -89,7 +89,7 @@
 
                 </div>
                 <div id="theme" style="max-height: 600px; overflow:auto;">
-                    <button type="button" class="btnkey bg-gray-dark color-pale mb-2" onclick="addTheme()">Add Internvention Areas</button>
+                    <button type="button" class="btnkey bg-gray-dark color-pale mb-2 addTheme" onclick="addTheme()">Add Internvention Areas</button>
                     <br>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                 let theme_row = '<hr style="border-bottom: 1px solid #400;"><div class="form-group theme"><label>Thematic Area</label>';
                 theme_row += '<select class="form-control mb-2 select2"   name="theme[]">';
                 theme_row += '<?php foreach ($areas as $row) : ?>';
-                theme_row += '<option value="<?php echo $row->id; ?>"><?php echo $row->name; ?> </option>';
+                theme_row += '<option value="<?php echo @$row->id; ?>"><?php echo @$row->name; ?> </option>';
                 theme_row += '<?php endforeach; ?></select></div>';
 
                 $("#theme").append(theme_row);
