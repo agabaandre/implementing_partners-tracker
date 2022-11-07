@@ -42,7 +42,7 @@
 <!-- AdminLTE App -->
 <!-- Select2 -->
 <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
-<!--<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>-->
+<script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
 
 <!-- <script src="<?php echo base_url(); ?>assets/dist/js/dashboard.js"></script> -->
 <!-- AdminLTE for demo purposes
