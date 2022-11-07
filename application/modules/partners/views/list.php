@@ -5,13 +5,9 @@
         <div class="card col-lg-12">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-lg-10">
+                    <div class="col-lg-12">
                         <h6><?php echo $row->project; ?></h6>
-                        <p><?php echo time_ago($row->start_date); ?></p>
-                    </div>
-                    <div class="col-lg-2">
-                        <br>
-                        <a href="" class="btn btn-success">View Details</a>
+                        <!-- <p><?php echo time_ago($row->start_date); ?></p> -->
                     </div>
                 </div>
             </div>

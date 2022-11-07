@@ -1,6 +1,6 @@
 <style>
     .form-control {
-        min-height: 40px;
+        min-height: 60px;
 
     }
 
@@ -47,7 +47,7 @@
                 <select class="form-control" name="profile" style="width: 100%;" onchange="$('.search_form').submit()" tabindex="-1" aria-hidden="true">
                     <option value="" disabled>SELECT Profile</option>
                     <?php foreach ($profiles as $profile) : ?>
-                        <option value="<?php echo $profile->id; ?>"><?php echo $profile->project; ?></option>
+                        <option  <?php echo ($profile->id == $profile_id)?"selected":""; ?> value="<?php echo $profile->id; ?>"><?php echo $profile->project; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -82,7 +82,7 @@
                                 <p>Description</p>
                             </th>
                             <th style="width:15%;">
-                                <p>Scope- coverage</p>
+                                <p>Coverage</p>
                             </th>
 
                             <th style="width:15%;">
