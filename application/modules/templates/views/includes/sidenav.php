@@ -75,7 +75,7 @@
             <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
               <i class="fa fa-road"></i>
               <p>
-                Submit Activity Report
+                Submit Report
               </p>
             </a>
           </li>
@@ -98,18 +98,13 @@
         <?php if (in_array('35', $permissions)) { ?>
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="fa fa-list"></i>
+              <i class="fa fa-cog"></i>
               <p>
-                Standard Form Lists
+                System Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-
-                <?php if (in_array('15', $permissions)) { ?>
-
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>partners/work_areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -128,26 +123,6 @@
                   <p>Funders</p>
                 </a>
               </li>
-
-            <?php } ?>
-
-
-
-            </ul>
-          </li>
-        <?php } ?>
-
-        <!--user perm 14-->
-        <?php if (in_array('35', $permissions)) { ?>
-          <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
-              <i class="fa fa-cog"></i>
-              <p>
-                System Settings
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
 
               <li class="nav-item">
 
