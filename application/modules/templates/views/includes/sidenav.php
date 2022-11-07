@@ -75,7 +75,7 @@
             <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
               <i class="fa fa-road"></i>
               <p>
-                Submit Activity Report
+                Submit Report
               </p>
             </a>
           </li>
