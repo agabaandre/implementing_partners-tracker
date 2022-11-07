@@ -105,6 +105,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>partners/work_areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -112,7 +113,19 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>partners/partners" class="nav-link">
+                <a href="<?php echo base_url(); ?>forms/sub_work_areas" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sub-Areas of Intervention</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>forms/activities" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Activities</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>forms/partners" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Partners</p>
                 </a>
@@ -133,12 +146,12 @@
                   </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>admin/groups" class="nav-link">
+                <a href="<?php echo base_url(); ?>permissions" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Group Permissions</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="<?php echo base_url(); ?>admin/showLogs" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>User Logs</p>
@@ -149,7 +162,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Constants & Variables</p>
                 </a>
-              </li>
+              </li> -->
             <?php } ?>
 
 
