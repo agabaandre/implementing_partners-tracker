@@ -75,9 +75,6 @@
                             <th style="width:20%;">
                                 <p>Activity</p>
                             </th>
-                            <th style="width:15%;">
-                                <p>Sub-Activity</p>
-                            </th>
                             <th style="width:10%;">
                                 <p>Description</p>
                             </th>
@@ -106,9 +103,6 @@
                                 <td>
                                     <input type="hidden" class="form-control" name="activity[]" value="<?php echo @$act->id; ?>">
                                     <?php echo @$act->name; ?>
-                                </td>
-                                <td class="sub_activity">
-
                                 </td>
                                 <td> <textarea class="form-control" name="description[]" rows="2"></textarea></td>
                                 <td>
