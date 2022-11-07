@@ -103,11 +103,10 @@ class Partners extends MX_Controller
 			$data['uptitle'] = $data['title']     = " Manage Work Areas";
 		}
 		$table = "work_areas";
-		$data['datas'] = $this->partners_model->get_data($table);
-
+		$data['datas']      = $this->partners_model->get_data($table);
 		$data['module'] 	= "partners";
-		$data['field'] 	= "name";
-		$data['label'] 	= "Work Areas";
+		$data['field'] 	    = "name";
+		$data['label'] 	    = "Work Areas";
 		$data['view']   	= "settings/option";
 		$data['action'] 	= "data/work_areas";
 
@@ -136,7 +135,7 @@ class Partners extends MX_Controller
 			$profile_id = $this->session->userdata('profile_id');
 		}
 
-		$data['activities'] = $this->partners_model->get_activities($profile_id);
+		$data['activities'] = $this->partners_model->get_profile_activities($profile_id);
 		$data['profile_id'] = $profile_id;
 
 
@@ -226,4 +225,29 @@ class Partners extends MX_Controller
 		$this->session->set_flashdata('msg', $msg);
 		redirect("partners/activities");
 	}
+
+	public function report()
+	{
+		$data['uptitle'] = $data['title']     = "Partner Activities Report";
+	
+		$data['profiles']   = $this->partners_model->get_data('partners_profile');
+
+		if ($this->input->post('profile')) {
+			$profile_id = $this->input->post('profile');
+		} else {
+			$profile_id = $this->session->userdata('profile_id');
+		}
+
+		$data['records'] = $this->partners_model->partners_report(3);
+		$data['profile_id'] = $profile_id;
+
+
+		$data['module'] = "partners";
+		$data['field'] 	= "name";
+		$data['label'] 	= "Activity";
+		$data['view']   = "report";
+
+		echo Modules::run('templates/main', $data);
+	}
+
 }
