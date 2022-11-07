@@ -66,6 +66,16 @@ if (!function_exists('settings')) {
         return $settings;
     }
 }
+//retrieve system settings like them and display
+if (!function_exists('profile')) {
+    function profile($id)
+    {
+        $ci = &get_instance();
+        $ci->db->where('partners_profile.id', $id);
+        $profile = $ci->db->get('partners_profile')->row()->project;
+        echo $profile;
+    }
+}
 
 //set flash data
 if (!function_exists('set_flash')) {

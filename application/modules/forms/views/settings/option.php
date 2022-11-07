@@ -9,22 +9,23 @@
 		<?php include 'includes/modal.php'; ?>
 
 		<div class="card-body text-left">
-			<table class="table table-striped mytable">
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
 						<th><?php echo $label; ?></th>
 						<th>Edit</th>
+
 					</tr>
 				</thead>
 
 				<?php
 				$i = 1;
-				foreach ($datas as $row) : ?>
+				foreach ($partners as $row) : ?>
 					<tr>
-						<td width="5%" lable="#"><?php echo $i++; ?></td>
-						<td label="<?php echo $label; ?>"><?php echo $row->name; ?></td>
-						<td label="Edit"><a href=" #edit<?php echo $row->id; ?>"><i class="fa fa-edit"></i> Edit</td>
+						<td width="5%"><?php echo $i++; ?></td>
+						<td><?php echo $row->name; ?></td>
+						<td><a href="#edit<?php echo $row->id; ?>"><i class="fa fa-edit"></i> Edit</td>
 					</tr>
 				<?php endforeach; ?>
 			</table>
