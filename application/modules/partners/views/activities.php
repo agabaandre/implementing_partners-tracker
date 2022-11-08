@@ -97,7 +97,7 @@
             </div>
 
             <div class="card-footer">
-                <button type="submit" class="btn btn-info btn-outline">Save</button>
+                <button type="submit" class="btn-danger btn-sm">Save</button>
                 <button type="reset" class="btn  btnkey bg-gray-dark color-pale ">Reset All</button>
 
             </div>
