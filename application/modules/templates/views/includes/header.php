@@ -1,8 +1,3 @@
-<?php
-$userdata = $this->session->userdata('user');
-$permissions = $userdata->permissions;
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -256,5 +251,10 @@ $permissions = $userdata->permissions;
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
   <!-- Site wrapper -->
+  <?php
+  $userdata = $this->session->userdata('user');
+  $permissions = $userdata->permissions;
+
+  ?>
   <div class="wrapper">
     <div id="app">

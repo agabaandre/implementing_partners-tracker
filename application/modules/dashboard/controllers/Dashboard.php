@@ -19,7 +19,6 @@ class Dashboard extends MX_Controller
 		$data['title'] = "Main Dashboard";
 		$data['uptitle'] = "Main Dashboard";
 		$data['view'] = "home";
-		$data['dashboard'] = $this->dashboardData();
 
 		echo Modules::run('templates/main', $data);
 	}
@@ -33,5 +32,21 @@ class Dashboard extends MX_Controller
 		$data['sub_work_areas'] = $this->dash_mdl->get_sub_work_areas();
 
 		echo json_encode($data);
+	}
+	public function theme_partners()
+	{
+		$data = $this->db->query("SELECT distinct name,id from work_areas")->result();
+		foreach ($data as $row) :
+			$this->attached_count_theme($row);
+		endforeach;
+
+		echo json_encode($data);
+	}
+
+	public function attached_count_theme($row)
+	{
+		$data = $this->db->query("SELECT count(profile_id) as count FROM partners_activities WHERE activity_id='$row->id'")->row();
+		$row->count = $data;
+		return $row;
 	}
 }

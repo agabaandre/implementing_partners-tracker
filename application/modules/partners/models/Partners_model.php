@@ -31,7 +31,7 @@ class Partners_model extends CI_Model
 
         if ($limit)
             $this->db->limit($limit, $start);
-        $this->db->order_by("id","desc"); 
+        $this->db->order_by("id", "desc");
         $profiles = $this->db->get("partners_profile")->result();
 
         foreach ($profiles as $row) :
@@ -60,11 +60,11 @@ class Partners_model extends CI_Model
     {
         $subwork_areas = $this->get_subwork_areas($profile_id);
 
-        if(count($subwork_areas)>0):
+        if (count($subwork_areas) > 0) :
             $this->db->where_in('sub_work_areas_id',  $subwork_areas);
             $activities = $this->db->get("activities")->result();
             return $activities;
-        else:
+        else :
             return [];
         endif;
     }
@@ -74,20 +74,20 @@ class Partners_model extends CI_Model
         $this->db->select("work_areas.id");
         $this->db->where('profile_id', $profile_id);
         $this->db->join("work_areas", "work_areas.id=partners_activities.activity_id");
-       
-        $work_areas =[];
-        foreach($this->db->get("partners_activities")->result() as $row){
+
+        $work_areas = [];
+        foreach ($this->db->get("partners_activities")->result() as $row) {
             $work_areas[] = $row->id;
         }
 
-        if(empty($work_areas))
-         return [];
+        if (empty($work_areas))
+            return [];
 
         $this->db->select("sub_work_areas.id");
-        $this->db->where_in("work_area_id",$work_areas);
-        $subwork_areas =[];
+        $this->db->where_in("work_area_id", $work_areas);
+        $subwork_areas = [];
 
-        foreach($this->db->get("sub_work_areas")->result() as $row1){
+        foreach ($this->db->get("sub_work_areas")->result() as $row1) {
             $subwork_areas[] = $row1->id;
         }
         return $subwork_areas;
@@ -110,8 +110,8 @@ class Partners_model extends CI_Model
 
         $data = array(
             "project"    => $data['project'],
-            "start_date" => $data['start_date'],
-            "end_date"   => $data['end_date'],
+            "start_date" => date('Y-m-d'),
+            "end_date"   => date('Y-m-d'),
             "email"      => $data['email'],
             "organisation_telephone" => $data['organisation_telephone'],
             "contact_person_title"   => $data['person_title'],
@@ -130,8 +130,7 @@ class Partners_model extends CI_Model
             $this->save_profile_partners($profile_id, $partners);
             $this->save_profile_activities($profile_id, $activities);
             $this->save_profile_funders($profile_id, $funders);
-        } 
-        else {
+        } else {
             $msg = "Failed Try Again";
         }
 
@@ -227,12 +226,13 @@ class Partners_model extends CI_Model
         endfor;
     }
 
-    public function partners_report($profile_id){
+    public function partners_report($profile_id)
+    {
 
-        $this->db->where("profile_id",$profile_id);
+        $this->db->where("profile_id", $profile_id);
         $rows = $this->db->get("partners_reports")->result();
 
-        foreach($rows as $row):
+        foreach ($rows as $row) :
             $row->profile  = $this->get_profile($profile_id);
             $row->activity = $this->get_activity($profile_id);
         endforeach;
@@ -240,14 +240,15 @@ class Partners_model extends CI_Model
         return $rows;
     }
 
-    public  function get_profile($profile_id){
-        $this->db->where('id',$profile_id);
+    public  function get_profile($profile_id)
+    {
+        $this->db->where('id', $profile_id);
         return $this->db->get("partners_profile")->row();
     }
 
-    public  function get_activity($activity_id){
-        $this->db->where('id',$activity_id);
+    public  function get_activity($activity_id)
+    {
+        $this->db->where('id', $activity_id);
         return $this->db->get("activities")->row();
     }
-
 }
