@@ -41,7 +41,9 @@
         </div>
         <div class="card-body">
 
-            <?php echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
+            <?php
+            if(empty($this->session->userdata('profile_id'))):
+            echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
             <div class="form-group col-lg-12">
                 <label>Choose Profile</label>
                 <select class="form-control" name="profile" style="width: 100%;" onchange="$('.search_form').submit()" tabindex="-1" aria-hidden="true">
@@ -52,6 +54,8 @@
                 </select>
             </div>
             </form>
+
+            <?php endif; ?>
 
             <?php echo form_open_multipart('partners/save_report'); ?>
 
