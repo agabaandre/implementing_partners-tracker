@@ -84,7 +84,7 @@
         <!--user perm 26-->
         <?php if (in_array('17', $permissions)) { ?>
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
+            <a href="<?php echo base_url("partners/report"); ?>" class="nav-link">
               <i class="fa fa-th"></i>
               <p>
                 Reports
