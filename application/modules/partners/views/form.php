@@ -114,6 +114,8 @@
                                 <td>
                                     <input type="hidden" class="form-control form-control-table" name="activity[]" value="<?php echo @$act->id; ?>">
                                     <?php echo @$act->name; ?>
+                                    <hr>
+                                    Theme: <?php echo $act->theme; ?>
                                 </td>
                                 <td> <textarea class="form-control form-control-table" name="description[]" rows="2"></textarea></td>
                                 <td>

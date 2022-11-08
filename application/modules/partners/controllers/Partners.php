@@ -116,9 +116,9 @@ class Partners extends MX_Controller
 	public function activities()
 	{
 		if (empty($id)) {
-			$data['uptitle'] = $data['title']     = " Work Activities";
+			$data['uptitle'] = $data['title']     = " Activities Report";
 		} else {
-			$data['uptitle'] = $data['title']     = " Manage Activities";
+			$data['uptitle'] = $data['title']     = " Manage Activities Reports";
 		}
 
 		$data['districts']  = $this->partners_model->get_districts();
