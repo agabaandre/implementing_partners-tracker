@@ -19,8 +19,19 @@ class Dashboard extends MX_Controller
 		$data['title'] = "Main Dashboard";
 		$data['uptitle'] = "Main Dashboard";
 		$data['view'] = "home";
-		//$data['dashboard']=$this->dashboardData();
+		$data['dashboard'] = $this->dashboardData();
 
 		echo Modules::run('templates/main', $data);
+	}
+	public  function dashboardData()
+	{
+		$data['total_records'] = $this->dash_mdl->get_reports();
+		$data['monthly_submissions'] = $this->dash_mdl->get_monthly_submissions();
+		$data['partners'] = $this->dash_mdl->get_partners();
+		$data['locations'] = $this->dash_mdl->get_locations();
+		$data['work_areas'] = $this->dash_mdl->get_work_areas();
+		$data['sub_work_areas'] = $this->dash_mdl->get_sub_work_areas();
+
+		echo json_encode($data);
 	}
 }

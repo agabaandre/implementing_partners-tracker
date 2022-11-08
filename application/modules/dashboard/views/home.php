@@ -42,7 +42,7 @@
 
            <div class="info-box-content">
              <span class="info-box-text">Total Monthly Report Submissions</span>
-             <span class="info-box-number" id="total_records"><?php echo $total_partners; ?></span>
+             <span class="info-box-number" id="total_records"></span>
            </div>
            <!-- /.info-box-content-->
          </div>
@@ -58,7 +58,7 @@
 
            <div class="info-box-content">
              <span class="info-box-text">Total Active Partners</span>
-             <span class="info-box-number" id="chwdata"><?php echo $total_partners; ?></span>
+             <span class="info-box-number" id="partners"></span>
            </div>
            <!-- /.info-box-content -->
          </div>
@@ -71,8 +71,8 @@
            <span class="info-box-icon"><i class="fas fa-clock"></i></span>
 
            <div class="info-box-content">
-             <span class="info-box-text">Districts</span>
-             <span class="info-box-number" id="daily_updates"><?php echo $total_districts; ?></span>
+             <span class="info-box-text">Locations</span>
+             <span class="info-box-number" id="locations"></span>
            </div>
            <!-- /.info-box-content -->
          </div>
@@ -85,7 +85,7 @@
 
            <div class="info-box-content">
              <span class="info-box-text">Areas of Service</span>
-             <span class="info-box-number" id="phase2_data"><?php echo $total_areas; ?></span>
+             <span class="info-box-number" id="work_areas"></span>
 
 
            </div>
@@ -149,10 +149,10 @@
 
              </tbody>
            </table>
-         </div>
-       </div><!-- /.card-body -->
-     </div>
-     <!-- /.card -->
+
+         </div><!-- /.card-body -->
+       </div>
+       <!-- /.card -->
      </div>
 
 
@@ -163,6 +163,7 @@
 
 
 
+   </div>
    </div>
 
 
@@ -262,16 +263,12 @@
        success: function(data) {
 
          $('#total_records').text(data.total_records);
-         $('#daily_updates').text(data.daily_updates);
-         $('#total_enrollers').text(data.total_enrollers);
-         $('#phase2_data').text(data.phase2_data);
-         $('#chwdata').text(data.chwdata);
-         $('#mhwdata').text(data.mhwdata);
-         $('#covered_districts').text(data.covered_districts);
-         $('#covered_facilities').text(data.covered_facilities);
-         $('#updated_records').text(data.updated_records);
-         // console.log(data);
-         renderGraph(data);
+         $('#monthly_submissions').text(data.monthly_submissions);
+         $('#partners').text(data.partners);
+         $('#locations').text(data.locations);
+         $('#work_areas').text(data.work_areas);
+         $('#sub_work_areas').text(data.sub_work_areas);
+         console.log(data);
 
 
        }

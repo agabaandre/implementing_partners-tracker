@@ -39,6 +39,7 @@ $permissions = $userdata->permissions;
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css"> -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- Theme style -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-avatar@latest/dist/avatar.css" rel="stylesheet">
   <link href="<?php echo base_url(); ?>assets/css/fullcalendar.css" rel="stylesheet">
   <style>
@@ -256,3 +257,4 @@ $permissions = $userdata->permissions;
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
   <!-- Site wrapper -->
   <div class="wrapper">
+    <div id="app">
