@@ -73,7 +73,20 @@ if (!function_exists('profile')) {
         $ci = &get_instance();
         $ci->db->where('partners_profile.id', $id);
         $profile = $ci->db->get('partners_profile')->row()->project;
-        echo $profile;
+        echo "<h5><b class='ml-2 mb-5'>Project Details: " . $profile . '</b></h5>';
+    }
+}
+
+if (!function_exists('funders')) {
+    function funders($id)
+    {
+        $ci = &get_instance();
+        $ci->db->where('partners_funders.profile_id', $id);
+        $ci->db->join('funder', 'partners_funders.funder_id=funder.id');
+        $funders = $ci->db->get('partners_funders')->result()->project;
+        foreach ($funders as $funder) :
+            echo " Funded By: <hr style='color:gray;'>" . $funder->name;
+        endforeach;
     }
 }
 
@@ -96,6 +109,7 @@ if (!function_exists('get_flash')) {
         return $ci->session->flashdata($key);
     }
 }
+
 
 //read from language file
 
