@@ -121,7 +121,9 @@
                                 <td>
                                     <select class="form-control select2 select2-table" name="scope[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
                                         <option value="" disabled>SELECT SCCOPE</option>
-                                        <option value="" disabled>National</option>
+                                        <option value="National">National</option>
+                                        <option value="Regional">Regional</option>
+                                        <option value="Facility Based">Facility Based</option>
                                         <?php foreach ($districts as $district) : ?>
                                             <option value="<?php echo $district->district; ?>"><?php echo $district->district; ?></option>
                                         <?php endforeach; ?>
