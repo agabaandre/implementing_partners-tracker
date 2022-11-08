@@ -5,7 +5,7 @@
     }
 
 
-    .select2-table {
+    #select2-table {
         border: 1px solid #ced4da;
         padding: 0.46875rem 0.75rem;
         height: 60px !important;
@@ -119,7 +119,7 @@
                                     Theme:<?php echo "" ?>
                                 </td>
                                 <td>
-                                    <select class="form-control select2 select2-table" name="scope[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
+                                    <select id="select2-table" class=" form-control select2 " name=" scope[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
                                         <option value="" disabled>SELECT SCCOPE</option>
                                         <option value="National">National</option>
                                         <option value="Regional">Regional</option>
