@@ -83,9 +83,10 @@ if (!function_exists('funders')) {
         $ci = &get_instance();
         $ci->db->where('partners_funders.profile_id', $id);
         $ci->db->join('funder', 'partners_funders.funder_id=funder.id');
-        $funders = $ci->db->get('partners_funders')->result()->project;
+        $funders = $ci->db->get('partners_funders')->result();
+        echo '<h6 class="ml-2">Funded By: </h6>';
         foreach ($funders as $funder) :
-            echo " Funded By: <hr style='color:gray;'>" . $funder->name;
+            echo "<hr style='color:grey;'><p class='ml-3'>" . $funder->name . '</p>';
         endforeach;
     }
 }
