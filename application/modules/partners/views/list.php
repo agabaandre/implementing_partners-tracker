@@ -14,7 +14,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-4">
-                        <h4 class="text-sm text-info">Partners</h4>
+                        <h4 class="text-sm text-primary">Partners</h4>
                         <?php foreach ($row->partners as $partner) { ?>
 
                             <li><?php echo $partner->name; ?></li>
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <h4 class="text-sm text-info">Funders</h4>
+                        <h4 class="text-sm text-primary">Funders</h4>
                         <?php foreach ($row->funders as $funder) { ?>
 
                             <li><?php echo $funder->name; ?></li>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="col-lg-4">
-                        <h4 class="text-sm text-info">Activities</h4>
+                        <h4 class="text-sm text-primary">Activities</h4>
                         <?php foreach ($row->activities as $act) { ?>
 
                             <li><?php echo $act->name; ?></li>

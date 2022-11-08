@@ -49,7 +49,7 @@ require_once("includes/sidenav.php");
 
 
           <?php
-          print_r($userdata);
+          //print_r($userdata);
 
           $this->load->view($module . "/" . $view);
 
