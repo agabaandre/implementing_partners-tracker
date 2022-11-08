@@ -39,7 +39,7 @@
 
 
             <?php
-            if ($this->session->userdata('user')->role != "sadmin") {
+            if ($this->session->userdata('user')->role == "sadmin") {
                 echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
                 <div class="form-group col-lg-12">
                     <label>Reporting Project:</label>
