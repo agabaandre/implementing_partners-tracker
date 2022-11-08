@@ -86,12 +86,13 @@
                             <th style="width:20%;">
                                 <p>Activity</p>
                             </th>
-                            <th style="width:10%;">
-                                <p>Description</p>
-                            </th>
                             <th style="width:15%;">
                                 <p>Coverage</p>
                             </th>
+                            <th style="width:10%;">
+                                <p>Activities Description</p>
+                            </th>
+
 
                             <th style="width:15%;">
                                 <p>Number of Beneficiaries</p>
@@ -117,7 +118,6 @@
                                     <hr>
                                     Theme:<?php echo "" ?>
                                 </td>
-                                <td> <textarea class="form-control form-control-table" name="description[]" rows="2"></textarea></td>
                                 <td>
                                     <select class="form-control select2 select2-table" name="scope[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
                                         <option value="" disabled>SELECT SCCOPE</option>
@@ -133,6 +133,8 @@
                                         ?>
                                     </select>
                                 </td>
+                                <td> <textarea class="form-control form-control-table" name="description[]" rows="2"></textarea></td>
+
                                 <td><input type="number" class="form-control form-control-table" name="no_beneficiaries[]" placeholder=""></td>
                                 <td><textarea class="form-control form-control-table" name="beneficiaries[]" rows="2"></textarea></td>
                                 <td><input type="number" class="form-control form-control-table" name="budget[]" placeholder=""></td>
