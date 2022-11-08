@@ -73,7 +73,7 @@ if (!function_exists('profile')) {
         $ci = &get_instance();
         $ci->db->where('partners_profile.id', $id);
         $profile = $ci->db->get('partners_profile')->row()->project;
-        echo "<h5><b class='ml-2 mb-5'>Project Details: " . $profile . '</b></h5>';
+        echo "<h5><b class='ml-2 mb-5'>Project Details: </b></h5><hr style='color:grey;'><p class='ml-3'>" . $profile . '</p>';
     }
 }
 

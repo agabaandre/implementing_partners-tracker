@@ -39,7 +39,7 @@
 
 
             <?php
-            if ($this->session->userdata('user')->role == "sadmin") {
+            if (empty($this->session->userdata('user')->profile_id)) {
                 echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
                 <div class="form-group col-lg-12">
                     <label>Reporting Project:</label>
@@ -115,7 +115,7 @@
                                     <input type="hidden" class="form-control form-control-table" name="activity[]" value="<?php echo @$act->id; ?>">
                                     <?php echo @$act->name; ?>
                                     <hr>
-                                    Theme: <?php echo $act->theme; ?>
+                                    Theme:<?php echo "" ?>
                                 </td>
                                 <td> <textarea class="form-control form-control-table" name="description[]" rows="2"></textarea></td>
                                 <td>
