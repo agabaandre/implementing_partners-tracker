@@ -47,7 +47,9 @@ require_once("includes/sidenav.php");
         <div class="col-12" style="margin-bottom:3px;">
 
 
+
           <?php
+          print_r($userdata);
 
           $this->load->view($module . "/" . $view);
 

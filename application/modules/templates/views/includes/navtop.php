@@ -43,7 +43,7 @@
 
           <?php
 
-          echo $userdata['names'];
+          echo $this->session->userdata('user')->name;
 
           // print_r($userdata); 
 
