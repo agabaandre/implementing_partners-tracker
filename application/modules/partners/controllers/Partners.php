@@ -132,7 +132,7 @@ class Partners extends MX_Controller
 		if ($this->input->post('profile')) {
 			$profile_id = $this->input->post('profile');
 		} else {
-			$profile_id = $this->session->userdata('profile_id');
+			$profile_id = $this->session->userdata('user')->profile_id;
 		}
 
 		$data['activities'] = $this->partners_model->get_profile_activities($profile_id);
@@ -229,7 +229,7 @@ class Partners extends MX_Controller
 	public function report()
 	{
 		$data['uptitle'] = $data['title']     = "Partner Activities Report";
-	
+
 		$data['profiles']   = $this->partners_model->get_data('partners_profile');
 
 		if ($this->input->post('profile')) {
@@ -249,5 +249,4 @@ class Partners extends MX_Controller
 
 		echo Modules::run('templates/main', $data);
 	}
-
 }
