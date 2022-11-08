@@ -181,13 +181,17 @@ class Auth_mdl extends CI_Model
 	}
 	public function getUserPerms($groupId)
 	{
-		$this->db->where('id', $groupId);
+
+		$this->db->where('group_id', $groupId);
 		$qry = $this->db->get('group_permissions');
 		$permissions = $qry->result();
+
 		$perms = array();
 		foreach ($permissions as $perm) {
+
 			array_push($perms, $perm->permission_id);
 		}
+
 		return $perms;
 	}
 	public function savePermissions($data)

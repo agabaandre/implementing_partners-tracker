@@ -20,27 +20,23 @@ class Auth extends MX_Controller
     $password = $this->input->post('password');
     $hash = $this->argonhash->make($password);
     $data = $this->auth_mdl->login($postdata);
-    $route = $this->input->post('route');
+    $data->permissions = $this->auth_mdl->getUserPerms(10);
     $adata = (array)$data;
     $hash = $this->argonhash->make($password);
+    //print_r($hash);
 
+    //exit();
     $auth = ($this->argonhash->check($password, $adata['password']));
     unset($adata['password']);
+
     //print_r($route);
 
     if ($auth) {
-      $adata['region'] = $this->auth_mdl->access_level1($adata['user_id']);
-      $adata['country'] = $this->auth_mdl->access_level2($adata['user_id']);
+
       $_SESSION['user'] = (object)$adata;
 
-      if (($postdata['route'] == 'rcc/dashboards') ||  ($postdata['route'] == 'auth/')) {
-        redirect('rccs');
-      } elseif ($postdata['route'] == 'admin/') {
-
-        redirect('dashboard');
-      } else {
-        redirect('auth');
-      }
+      echo "logged";
+      redirect('dashboard');
     } else {
       redirect('auth');
     }
@@ -51,7 +47,7 @@ class Auth extends MX_Controller
   {
     session_unset();
     session_destroy();
-    redirect("admin");
+    redirect("auth");
   }
 
   public function getUserByid($id)

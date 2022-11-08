@@ -23,7 +23,7 @@
      <!-- Main row -->
 
      <?php
-      $permissions = $this->session->userdata('permissions');
+      $permissions = $this->session->userdata('user')->permissions;
       //  print_r($permissions);
       if (in_array('33', $permissions)) {
         $display = "active";
