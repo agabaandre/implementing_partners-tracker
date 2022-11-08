@@ -2,91 +2,86 @@
 <html lang="en">
 
 <head>
-
-  <title>Africa CDC Knoledge Hub</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="description" content="Flash Able Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs." />
-  <meta name="keywords" content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, Flash Able, Flash Able bootstrap admin template">
-  <meta name="author" content="Codedthemes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partners Registration Portal</title>
 
-  <!-- Favicon icon -->
-  <link rel="icon" href="<?php echo base_url(); ?>assets/images/icon_Africa_cdc.png" type="image/x-icon">
-  <!-- fontawesome icon -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/fonts/fontawesome/css/fontawesome-all.min.css">
-  <!-- animation css -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/animation/css/animate.min.css">
-  <!-- vendor css -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css?v=3.2.0">
+
 </head>
-<!-- [ auth-signin ] start -->
-<div class="auth-wrapper">
-  <div class="auth-content container">
-    <div class="card">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="card-body">
-            <img src="<?php echo base_url() ?>assets/images/cdc_square.png.png" alt="" class="img-fluid mb-4">
-            <h3 class="mb-3 f-w-400 justify-content-center">Sign In</h3>
-            <?php echo form_open_multipart(base_url('auth/login'), array('id' => 'filetypes', 'class' => 'filetypes')); ?>
 
+<body class="hold-transition login-page">
+  <div class="login-box">
 
-            <div class="input-group mb-2">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="feather icon-mail"></i></span>
-              </div>
-              <input type="text" name="username" class="form-control" placeholder="Email address">
+    <div class="card card-outline card-deafult">
+      <div class="card-header text-center">
+        <p>
+        <h3>Partners Registration Portal</h3>
+        </p>
+        <a href="<?php echo base_url() ?>assets/"><img src="<?php echo base_url() ?>assets/images/MOH.jpg" alt="Logo MoH" width=95> </a>
+      </div>
+      <div class="card-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+
+        <?php echo form_open_multipart('auth/login'); ?>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" name="username" placeholder="Username / Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="feather icon-lock"></i></span>
-              </div>
-              <input type="password" name="password" class="form-control" placeholder="Password">
-              <input type="hidden" name="route" class="form-control" value="<?php echo $this->uri->segment(1) ?>/<?php echo $this->uri->segment(2) ?>" placeholder="Password">
-            </div>
-
-            <div class="form-group text-left mt-2">
-              <div class="checkbox checkbox-primary d-inline">
-                <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
-                <label for="checkbox-fill-a1" class="cr"> Save credentials</label>
-              </div>
-            </div>
-            <button class="btn btn-primary mb-4">Login</button>
-
-            </form>
-            <p class="mb-2 text-muted">Forgot password? <a href="auth-reset-password.html" class="f-w-400">Reset</a></p>
-
           </div>
         </div>
-        <div class="col-md-6 d-none d-md-block">
-
-          <img src="<?php echo base_url() ?>assets/images/image_login.png" alt="" class="img-fluid">
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+
+        </div>
+        </form>
+
+
+        <!-- <p class="mb-1">
+          <a href="forgot-password.html">I forgot my password</a>
+        </p>
+        <p class="mb-0">
+          <a href="register.html" class="text-center">Register a new membership</a>
+        </p> -->
       </div>
+
     </div>
+
   </div>
-</div>
-<!-- [ auth-signin ] end -->
-
-<!-- Required Js -->
-<script src="<?php echo base_url() ?>assets/js/vendor-all.min.js"></script>
-<script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
 
-<div class="footer-fab">
-  <div class="b-bg">
-    <i class="fas fa-question"></i>
-  </div>
-  <div class="fab-hover">
-    <ul class="list-unstyled">
-      <li><a href="<?php echo base_url() ?>doc/index-bc-package.html" data-text="UI Kit" class="btn btn-icon btn-rounded btn-info m-0"><i class="feather icon-layers"></i></a></li>
-      <li><a href="<?php echo base_url() ?>doc/index.html" data-text="Document" class="btn btn-icon btn-rounded btn-primary m-0"><i class="feather icon feather icon-book"></i></a></li>
-    </ul>
-  </div>
-</div>
+  <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
 
+  <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js?v=3.2.0"></script>
 </body>
 
 </html>
