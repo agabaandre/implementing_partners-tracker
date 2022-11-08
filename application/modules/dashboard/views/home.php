@@ -85,7 +85,7 @@
      <div class="card">
 
        <div class="card-body">
-         <div id="record_breakdown"></div>
+         <div id="theme_status"></div>
 
        </div>
      </div>
@@ -123,7 +123,7 @@
 
             <tr v-for='district in districts'>
               <td>{{district.id}}</td>
-              <td>{{district.name}}</td>>
+              <td>{{district.name}}</td>
               <td>{{district.count.count}}</td>
 
 
@@ -232,36 +232,6 @@
 
 
 
-  //get dashboard Data
-  //$(document).ready(function() {
-  //  renderGraph(data);
-
-
-  //   $.ajax({
-  //     type: 'GET',
-  //     url: '<?php //echo base_url('dashboard/dashboardData') 
-                ?>',
-  //     dataType: "json",
-  //     data: '',
-  //     success: function(data) {
-
-  //       $('#total_records').text(data.total_records);
-  //       $('#monthly_submissions').text(data.monthly_submissions);
-  //       $('#partners').text(data.partners);
-  //       $('#locations').text(data.locations);
-  //       $('#work_areas').text(data.work_areas);
-  //       $('#sub_work_areas').text(data.sub_work_areas);
-  //       //console.log(data);
-
-
-  //     }
-
-  //   });
-
-
-
-  // });
-
   //get data for districts
   var app = new Vue({
     el: '#app',
@@ -332,6 +302,8 @@
             $('#work_areas').text(data.work_areas);
             $('#sub_work_areas').text(data.sub_work_areas);
 
+            theme_status_column_graph(data)
+
           })
           .catch(function(error) {
             //  /console.log(error);
@@ -341,4 +313,57 @@
 
     }
   })
+
+  function theme_status_column_graph(gdata) {
+
+    // Set up the chart
+    const chart = new Highcharts.Chart({
+      chart: {
+        renderTo: 'themes_status',
+        type: 'column',
+        options3d: {
+          enabled: true,
+          alpha: 15,
+          beta: 15,
+          depth: 50,
+          viewDistance: 25
+        }
+      },
+      xAxis: {
+        categories: gdata.keys
+      },
+      yAxis: {
+        title: {
+          enabled: false
+        }
+      },
+      tooltip: {
+        headerFormat: '<b>{point.key}</b><br>',
+        pointFormat: 'Records: {point.y}'
+      },
+      title: {
+        text: 'Data Status'
+      },
+      subtitle: {
+        text: 'Source: ' +
+          '<a href="<?php echo base_url() ?>"' +
+          'target="_blank">Digital Finance Databank</a>'
+      },
+      legend: {
+        enabled: false
+      },
+      plotOptions: {
+        column: {
+          depth: 25
+        }
+      },
+      series: [{
+        data: gdata.values,
+        colorByPoint: true
+      }],
+      credits: {
+        enabled: false
+      }
+    });
+  }
 </script>

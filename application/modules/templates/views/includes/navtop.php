@@ -8,7 +8,7 @@
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <div class="header-title" style="color:#FFF; margin-top:5px;">
-
+      </div>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
 
