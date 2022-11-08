@@ -88,12 +88,12 @@
                             <th style="width:15%;">
                                 <p>Coverage</p>
                             </th>
-                            <th style="width:10%;">
+                            <th style="width:20%;">
                                 <p>Activities Description</p>
                             </th>
 
 
-                            <th style="width:15%;">
+                            <th style="width:5%;">
                                 <p>Number of Beneficiaries</p>
                             </th>
                             <th style="width:10%;">
