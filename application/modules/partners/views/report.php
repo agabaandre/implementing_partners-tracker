@@ -10,7 +10,7 @@
         <div class="card-body">
 
             <?php 
-              if(empty($this->session->userdata('profile_id'))):
+              if(empty($this->session->userdata('user')->profile_id)):
             
             echo form_open_multipart('partners/report', ['class' => 'search_form']); ?>
             <div class="form-group col-lg-12">
@@ -24,7 +24,10 @@
             </div>
             </form>
             <?php endif; ?>
-
+            
+            <div class="row p-3">
+              <a class="btn btn-dark" href="<?php echo base_url(); ?>partners/report?csv=1">Export to CSV</a>
+            </div>
             <div class="col-md-12">
                 <table class="table table-striped">
                     <thead>

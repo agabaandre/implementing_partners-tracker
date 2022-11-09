@@ -42,7 +42,9 @@
         <div class="card-body">
 
             <?php
-            if(empty($this->session->userdata('profile_id'))):
+            
+            if(empty($this->session->userdata('user')->profile_id)):
+
             echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
             <div class="form-group col-lg-12">
                 <label>Choose Profile</label>
