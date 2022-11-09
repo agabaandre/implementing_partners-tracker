@@ -41,6 +41,7 @@
                     </div>
                 </div>
             </div>
+            <a href="#edit_profile" class="btn btn-sm btn-danger mb-2" style="width:50px;"><i class="fa fa-edit"></i>Edit Profile</a>
         </div>
 
     <?php endforeach; ?>
