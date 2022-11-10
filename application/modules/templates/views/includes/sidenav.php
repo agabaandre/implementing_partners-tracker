@@ -39,39 +39,6 @@
         <!--user perm 14-->
         <?php if (in_array('13', $permissions)) { ?>
           <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link">
-              <i class="fa fa-building"></i>
-              <p>
-                Partners Management
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-
-              <li class="nav-item">
-
-                <?php if (in_array('13', $permissions)) { ?>
-                  <a href="<?php echo base_url(); ?>partners/partners_profile" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Register</p>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>partners/manage_partners" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage</p>
-                </a>
-              </li>
-            <?php } ?>
-
-            </ul>
-          </li>
-        <?php } ?>
-
-
-        <!--user perm 14-->
-        <?php if (in_array('13', $permissions)) { ?>
-          <li class="nav-item has-treeview ">
             <a href="<?php echo base_url(); ?>partners/activities" class="nav-link">
               <i class="fa fa-road"></i>
               <p>
@@ -105,6 +72,41 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+
+              <!--user perm 14-->
+              <?php if (in_array('13', $permissions)) { ?>
+                <li class="nav-item has-treeview ">
+                  <a href="#" class="nav-link">
+                    <i class="fa fa-building"></i>
+                    <p>
+                      Partners Management
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+
+                    <li class="nav-item">
+
+                      <?php if (in_array('13', $permissions)) { ?>
+                        <a href="<?php echo base_url(); ?>partners/partners_profile" class="nav-link">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Register</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="<?php echo base_url(); ?>partners/manage_partners" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Manage</p>
+                      </a>
+                    </li>
+                  <?php } ?>
+
+                  </ul>
+                </li>
+              <?php } ?>
+
+
+
 
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>partners/work_areas" class="nav-link">
