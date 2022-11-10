@@ -70,7 +70,7 @@ class Partners_model extends CI_Model
     public function get_work_area($subwork_area_id){
 
         $this->db->select("work_areas.id,work_areas.name");
-        $this->db->where_in('`work_areas`.`id`',  $subwork_area_id);
+        $this->db->where_in('work_areas.id',  $subwork_area_id);
         $this->db->join("work_areas","work_areas.id=sub_work_areas.work_area_id");
 
         return $this->db->get("sub_work_areas")->row();
