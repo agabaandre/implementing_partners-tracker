@@ -23,7 +23,7 @@ class Partners extends MX_Controller
 			$data['uptitle']  = $data['title']     = " Register Partner";
 		} else {
 			$data['uptitle']  = $data['title']     = " Manage Partner";
-			$data['partners'] = $this->partners_mdl->get();
+			$data['profile'] = $this->partners_model->get_profile($id);
 		}
 
 		$data['districts']  = $this->partners_model->get_districts();
@@ -32,10 +32,11 @@ class Partners extends MX_Controller
 		$data['areas']      = $this->partners_model->get_data('work_areas');
 		$data['activities'] = $this->partners_model->get_data('activities');
 		$data['module'] 	= "partners";
-		$data['view']   	= "activities";
+		$data['view']   	= (empty($id))?"profile_add":"profile_edit";
 
 		echo Modules::run('templates/main', $data);
 	}
+
 
 	public function manage_partners()
 	{

@@ -38,6 +38,8 @@ class Partners_model extends CI_Model
         $row->partners   = $this->get_profile_partners($row->id);
         $row->activities = $this->get_profile_activities($row->id);
         $row->funders    = $this->get_profile_funders($row->id);
+
+        return $row;
     }
 
     public function get_profile_partners($profile_id)
@@ -54,10 +56,24 @@ class Partners_model extends CI_Model
         if (count($subwork_areas) > 0) :
             $this->db->where_in('sub_work_areas_id',  $subwork_areas);
             $activities = $this->db->get("activities")->result();
+
+            foreach($activities as $row){
+                $row->workarea= $this->get_work_area($row->sub_work_areas_id);
+            }
+            
             return $activities;
         else :
             return [];
         endif;
+    }
+
+    public function get_work_area($subwork_area_id){
+
+        $this->db->select("work_areas.id,work_areas.name");
+        $this->db->where_in('id',  $subwork_area_id);
+        $this->db->join("work_areas","work_areas.id=sub_work_areas.work_area_id");
+
+        return $this->db->get("sub_work_areas")->row();
     }
 
     public function get_subwork_areas($profile_id)
@@ -93,30 +109,35 @@ class Partners_model extends CI_Model
 
     public function save_partner()
     {
-        $data = $this->input->post();
+        $postdata = $this->input->post();
 
-        $partners   = $data["partner"];
-        $funders    = $data["funder"];
-        $activities = @$data['theme'];
+        $partners   = $postdata["partner"];
+        $funders    = $postdata["funder"];
+        $activities = @$postdata['theme'];
 
         $data = array(
-            "project"    => $data['project'],
+            "project"    => $postdata['project'],
             "start_date" => date('Y-m-d'),
             "end_date"   => date('Y-m-d'),
-            "email"      => $data['email'],
-            "organisation_telephone" => $data['organisation_telephone'],
-            "contact_person_title"   => $data['person_title'],
-            "contact_person_name"    => $data['name'],
-            "contact_phone_number"   => $data['phone_number'],
-            "contact_position"       => $data['position']
+            "email"      => $postdata['email'],
+            "organisation_telephone" => $postdata['organisation_telephone'],
+            "contact_person_title"   => $postdata['person_title'],
+            "contact_person_name"    => $postdata['name'],
+            "contact_phone_number"   => $postdata['phone_number'],
+            "contact_position"       => $postdata['position']
         );
 
-        $query  = $this->db->insert("partners_profile", $data);
+        if(!isset($postdata['id'])):
+            $query  = $this->db->insert("partners_profile", $data);
+            $profile_id = $this->db->insert_id();
+        else:
+            $this->db->where("id",$postdata['id']);
+            $profile_id = $postdata['id'];
+            $query  = $this->db->update("partners_profile", $data);
+        endif;
 
         if ($query) {
             $msg = "Saved Successfully";
-
-            $profile_id = $this->db->insert_id();
 
             $this->save_profile_partners($profile_id, $partners);
             $this->save_profile_activities($profile_id, $activities);
@@ -131,6 +152,9 @@ class Partners_model extends CI_Model
     public function save_profile_partners($profile_id, $data)
     {
 
+        $this->db->where('profile_id',$profile_id);
+        $this->db->delete('profile_partners');
+
         foreach ($data as $key => $value) {
 
             $row = ['profile_id' => $profile_id, "partner_id" => $value];
@@ -140,6 +164,9 @@ class Partners_model extends CI_Model
 
     public function save_profile_activities($profile_id, $data)
     {
+        $this->db->where('profile_id',$profile_id);
+        $this->db->delete('partners_activities');
+
         foreach ($data as $key => $value) {
             $row = ['profile_id' => $profile_id, "activity_id" => $value];
             $this->db->insert("partners_activities", $row);
@@ -148,6 +175,9 @@ class Partners_model extends CI_Model
 
     public function save_profile_funders($profile_id, $data)
     {
+        $this->db->where('profile_id',$profile_id);
+        $this->db->delete('partners_funders');
+
         foreach ($data as $key => $value) {
             $row = ['profile_id' => $profile_id, "funder_id" => $value];
             $this->db->insert("partners_funders", $row);
@@ -234,7 +264,9 @@ class Partners_model extends CI_Model
     public  function get_profile($profile_id)
     {
         $this->db->where('id', $profile_id);
-        return $this->db->get("partners_profile")->row();
+        $row = $this->db->get("partners_profile")->row();
+        $row =  $this->attach_related($row);
+        return $row;
     }
 
     public  function get_activity($activity_id)

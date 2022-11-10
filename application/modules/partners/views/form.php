@@ -35,21 +35,6 @@
         </div>
         <div class="card-body">
 
-            <?php
-            
-            if(empty($this->session->userdata('user')->profile_id)):
-
-            echo form_open_multipart('partners/activities', ['class' => 'search_form']); ?>
-            <div class="form-group col-lg-12">
-                <label>Choose Profile</label>
-                <select class="form-control" name="profile" style="width: 100%;" onchange="$('.search_form').submit()" tabindex="-1" aria-hidden="true">
-                    <option value="" disabled>SELECT Profile</option>
-                    <?php foreach ($profiles as $profile) : ?>
-                        <option  <?php echo ($profile->id == $profile_id)?"selected":""; ?> value="<?php echo $profile->id; ?>"><?php echo $profile->project; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-            </form>
 
 
             <?php
@@ -130,7 +115,7 @@
                                     <input type="hidden" class="form-control form-control-table" name="activity[]" value="<?php echo @$act->id; ?>">
                                     <?php echo @$act->name; ?>
                                     <hr>
-                                    Theme:<?php echo "" ?>
+                                    Theme:<?php echo $act->workarea->name; ?>
                                 </td>
                                 <td>
                                     <select id="select2-table" class=" form-control select2" name=" scope[]" style="width: 100%;" tabindex="-1" aria-hidden="true" multiple>
