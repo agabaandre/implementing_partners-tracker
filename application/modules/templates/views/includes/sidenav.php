@@ -100,7 +100,7 @@
             <a href="#" class="nav-link">
               <i class="fa fa-cog"></i>
               <p>
-                System Settings
+                Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
