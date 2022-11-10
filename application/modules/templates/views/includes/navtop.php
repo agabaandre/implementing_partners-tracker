@@ -60,10 +60,11 @@
 
         <div class="dropdown-divider"></div>
         <a href="<?php echo base_url(); ?>auth/logout" class="dropdown-item"><i class="fa fa-arrow-left"></i> Logout</a>
-
         <div class="dropdown-divider"></div>
-        <a href="<?php echo base_url(); ?>" class="passchange dropdown-toggle" data-toggle="modal" data-target="#changepassword"><i class="fa fa-lock"></i> Change Password</a>
+        <a href="<?php echo base_url(); ?>#" class="dropdown-item" data-toggle="modal" role="button" data-target="#changepassword"><i class="fa fa-lock"></i> Change Password</a>
+
       </div>
+    </li>
 
 
 
