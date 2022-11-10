@@ -99,9 +99,9 @@ class Partners extends MX_Controller
 	public function work_areas()
 	{
 		if (empty($id)) {
-			$data['uptitle'] = $data['title']     = " Work Areas";
+			$data['uptitle'] = $data['title']     = " Themes";
 		} else {
-			$data['uptitle'] = $data['title']     = " Manage Work Areas";
+			$data['uptitle'] = $data['title']     = " Manage Themes";
 		}
 		$table = "work_areas";
 		$data['datas']      = $this->partners_model->get_data($table);

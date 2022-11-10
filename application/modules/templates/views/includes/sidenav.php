@@ -111,13 +111,13 @@
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>partners/work_areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Areas of Intervention</p>
+                  <p>Themes</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>forms/sub_work_areas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Sub-Areas of Intervention</p>
+                  <p>Sub-Themes</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -175,15 +175,7 @@
 
 
 
-        <li class="nav-item has-treeview">
-          <a href="<?php echo base_url(); ?>" class="nav-link" class="passchange nav-link dropdown-toggle" data-toggle="modal" role="button" data-target="#changepassword">
-            <i class="fa fa-lock"></i>
-            <p>
-              Change Password
-              </i>
-            </p>
-          </a>
-        </li>
+       
 
 
 
