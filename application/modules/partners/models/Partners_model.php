@@ -57,21 +57,22 @@ class Partners_model extends CI_Model
             $this->db->where_in('sub_work_areas_id',  $subwork_areas);
             $activities = $this->db->get("activities")->result();
 
-            foreach($activities as $row){
-                $row->workarea= $this->get_work_area($row->sub_work_areas_id);
+            foreach ($activities as $row) {
+                $row->workarea = $this->get_work_area($row->sub_work_areas_id);
             }
-            
+
             return $activities;
         else :
             return [];
         endif;
     }
 
-    public function get_work_area($subwork_area_id){
+    public function get_work_area($subwork_area_id)
+    {
 
         $this->db->select("work_areas.id,work_areas.name");
         $this->db->where_in('work_areas.id',  $subwork_area_id);
-        $this->db->join("work_areas","work_areas.id=sub_work_areas.work_area_id");
+        $this->db->join("work_areas", "work_areas.id=sub_work_areas.work_area_id");
 
         return $this->db->get("sub_work_areas")->row();
     }
@@ -127,11 +128,11 @@ class Partners_model extends CI_Model
             "contact_position"       => $postdata['position']
         );
 
-        if(!isset($postdata['id'])):
+        if (!isset($postdata['id'])) :
             $query  = $this->db->insert("partners_profile", $data);
             $profile_id = $this->db->insert_id();
-        else:
-            $this->db->where("id",$postdata['id']);
+        else :
+            $this->db->where("id", $postdata['id']);
             $profile_id = $postdata['id'];
             $query  = $this->db->update("partners_profile", $data);
         endif;
@@ -152,7 +153,7 @@ class Partners_model extends CI_Model
     public function save_profile_partners($profile_id, $data)
     {
 
-        $this->db->where('profile_id',$profile_id);
+        $this->db->where('profile_id', $profile_id);
         $this->db->delete('profile_partners');
 
         foreach ($data as $key => $value) {
@@ -164,7 +165,7 @@ class Partners_model extends CI_Model
 
     public function save_profile_activities($profile_id, $data)
     {
-        $this->db->where('profile_id',$profile_id);
+        $this->db->where('profile_id', $profile_id);
         $this->db->delete('partners_activities');
 
         foreach ($data as $key => $value) {
@@ -175,7 +176,7 @@ class Partners_model extends CI_Model
 
     public function save_profile_funders($profile_id, $data)
     {
-        $this->db->where('profile_id',$profile_id);
+        $this->db->where('profile_id', $profile_id);
         $this->db->delete('partners_funders');
 
         foreach ($data as $key => $value) {
@@ -251,7 +252,14 @@ class Partners_model extends CI_Model
     {
 
         $this->db->where("profile_id", $profile_id);
+        if (!empty($this->input->post('datefrom'))) {
+            $datefrom = $this->input->post('datefrom');
+            $datato = $this->input->post('dateto');
+
+            $this->db->where('date BETWEEN "' . date('Y-m-d', strtotime($datefrom)) . '" and "' . date('Y-m-d', strtotime($datato)) . '"');
+        }
         $rows = $this->db->get("partners_reports")->result();
+
 
         foreach ($rows as $row) :
             $row->profile  = $this->get_profile($profile_id);

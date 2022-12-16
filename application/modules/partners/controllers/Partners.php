@@ -32,7 +32,7 @@ class Partners extends MX_Controller
 		$data['areas']      = $this->partners_model->get_data('work_areas');
 		$data['activities'] = $this->partners_model->get_data('activities');
 		$data['module'] 	= "partners";
-		$data['view']   	= (empty($id))?"profile_add":"profile_edit";
+		$data['view']   	= (empty($id)) ? "profile_add" : "profile_edit";
 
 		echo Modules::run('templates/main', $data);
 	}
@@ -241,7 +241,7 @@ class Partners extends MX_Controller
 		$data['records'] = $this->partners_model->partners_report($profile_id);
 		$data['profile_id'] = $profile_id;
 
-		if($this->input->get('csv')){
+		if ($this->input->get('csv')) {
 			$this->csv_report($data['records']);
 		}
 
@@ -254,23 +254,24 @@ class Partners extends MX_Controller
 		echo Modules::run('templates/main', $data);
 	}
 
-	public function csv_report($records){
+	public function csv_report($records)
+	{
 
 		$rows = [];
 
-		foreach ($records as $act):
+		foreach ($records as $act) :
 			$rows[] = [
-				"DATE"=>$act->date ,
-				"ACTIVITY"=>$act->activity->name,
-				"BUDGET"=>$act->budget,
-				"DURATION"=>$act->duration,
-			    "BENEFICIARIES"=>$act->beneficiaries,
-				"LOCATION"=>$act->location
+				"DATE" => $act->date,
+				"ACTIVITY" => $act->activity->name,
+				"PARTNER" => $act->profile->project,
+				"BUDGET" => $act->budget,
+				"DURATION" => $act->duration,
+				"BENEFICIARIES" => $act->beneficiaries,
+				"LOCATION" => $act->location
 			];
 		endforeach;
 
-		render_csv_data($rows, "report_".time().".csv");
+		render_csv_data($rows, "report_" . time() . ".csv");
 		return;
 	}
-
 }
